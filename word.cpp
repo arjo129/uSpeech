@@ -30,7 +30,7 @@ void uword::debugPrint(){
   Serial.print("\n");
   Serial.println("----------");
 }
-void attachPhoneme(phoneme P){
+void uword::attachPhoneme(phoneme P){
 	len++;
 	vector[0][0] += P.vector[0][0]; vector[1][0] += P.vector[1][0];
 	vector[0][1] += P.vector[0][1]; vector[1][1] += P.vector[1][1];

@@ -71,6 +71,13 @@ private:
 	int difOverall();
 	void complexity();
 };
-
+class trainedNueron
+{
+public:
+	char weights[2][5];
+	trainedNueron(char v,char v1, char v2, char v3, char v4, char v10, char v11, char v12, char v13, char v14);
+	unsigned long input(unsigned long v,unsigned long v1, unsigned long v2, unsigned long v3, unsigned long v4, unsigned long v10, unsigned long v11, unsigned long v12, unsigned long v13, unsigned long v14);
+	
+};
 
 #endif

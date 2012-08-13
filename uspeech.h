@@ -30,12 +30,15 @@ public:
 	unsigned int stdev[2][5];
 	int getDistance(phoneme p);
 };
+
 class uword
 {
 public:
 	uword();
+	void reset();
 	void debugPrint();
 	void attachPhoneme(phoneme P);
+	int confidence();
 	unsigned long len;
 	unsigned long vector[2][5];
 };

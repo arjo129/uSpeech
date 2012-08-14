@@ -71,16 +71,19 @@ private:
 	int difOverall();
 	void complexity();
 };
-class knueralnet
+class fingerprint
 {
 public:
-	char outputs;
-	char weights[10][10];
-	knueralnet(char output);
-	char classify(uword text);
-	char classify(phoneme p);
-private:
-	unsigned long o[10];
-};
+	fingerprint(uword utterance);
+	void debugPrint();
+	unsigned long finger[2][5];
+}
+class pfingerprint
+{
+public:
+	pfingerprint(phoneme utterance);
+	void debugPrint();
+	unsigned int finger[2][5];
+}
 
 #endif

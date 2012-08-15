@@ -29,6 +29,8 @@ void loop(){
         if(words.confidence()>60){
           words.debugPrint();
           words.reset();
+          auto fingerprint fg(words);
+          fg.debugPrint();
           printed = true;
         }
         printed = true;

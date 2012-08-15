@@ -77,13 +77,13 @@ public:
 	fingerprint(uword utterance);
 	void debugPrint();
 	unsigned long finger[2][5];
-}
+};
 class pfingerprint
 {
 public:
 	pfingerprint(phoneme utterance);
 	void debugPrint();
 	unsigned int finger[2][5];
-}
+};
 
 #endif

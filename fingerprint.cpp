@@ -1,6 +1,7 @@
 #include "uspeech.h"
 
 fingerprint::fingerprint(uword utterance){
+	unsigned long len = utterance.len;
 	int mean =(	utterance.vector[0][0]/len+
 				utterance.vector[0][1]/len+
 				utterance.vector[0][2]/len+
@@ -69,7 +70,7 @@ pfingerprint::pfingerprint(phoneme utterance){
 	finger[0][2] = (10*(utterance.vector[1][2]-mean))/var;
 	finger[0][3] = (10*(utterance.vector[1][3]-mean))/var;
 }
-void fingerprint::debugPrint(){
+void pfingerprint::debugPrint(){
 	Serial.print(finger[0][0]);
 	Serial.print("\t");
 	Serial.print(finger[1][0]);

@@ -35,4 +35,12 @@ private:
 	void formantAnal();
 };
 
+bool IsVowel(char c);
+bool uIsVowel(char c);
+bool uIsPlosive(char c);
+bool in(char c, String s);
+int umatch(String ing, String desired);
+int getSyllables(String ing);
+int mapChar(char a);
+String denoise(char c, String prev);
 #endif

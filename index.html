@@ -33,20 +33,36 @@
         <section id="main_content">
           <h1>uSpeech library</h1>
 
-<p>The uSpeech library provides an interface for voice recognition using the Arduino. It currently produces vectors corresponding to the phoneme.
-<em>THE LIBRARY IS UNDERDEVELOPMENT AND UNDERGOING MASSIVE CHANGES I DO NOT ADVICE USE UNTIL A STABLE RELEASE IS OUT</em></p>
+<p>The uSpeech library provides an interface for voice recognition using the Arduino. It currently produces phonemes, often the library will produce junk phonemes. Please bare with it for the time being. A noise removal function is underway.</p>
 
 <h2>Minimum Requirements</h2>
 
-<p>The library is quite intensive on the processor. Each sample collection takes about 3.2 milliseconds so pay close attention to the time. The library has been tested on the Arduino Uno. A basic speech recognition sketch takes about 256 bytes. The sketch requires a minimum IDE version of 1.0.</p>
+<p>The library is quite intensive on the processor. Each sample collection takes about 3.2 milliseconds so pay close attention to the time. The library has been tested on the Arduino Uno (ATMega32). Each signal object uses up 160bytes. No real time scheduler should be used with this.</p>
 
-<h2>How to use</h2>
+<h2>Features</h2>
 
-<p>The library implements a fingerprint extraction that gives each phoneme/word a unique fingerprint. The user will need to implement a lookup function after training the recognizer. A sofware for automatic generation of the look up function is underway.</p>
-
-<h2>Documentation</h2>
+<ul>
+<li>Letter based recognition</li>
+<li>Small memory footprint</li>
+<li>Arduino Compatible</li>
+<li>No training required</li>
+<li>Fixed point arithmetic</li>
+<li>30% - 40% accuracy if based on phonemes, up to 80% if based on words.</li>
+<li>Plugs directly into an <code>analogRead()</code> port</li>
+</ul><h2>Documentation</h2>
 
 <p>Documentation on this library is a work in progress. The GitHub wiki will have more on the library. </p>
+
+<h2>Algorythm</h2>
+
+<p>The library utilizes a special algorythm to enable speech detection. First the complexity of the signal is determined by taking
+the absolute derivative of the signal multiplying it by a fixed point saclar and then dividing it by the absolute integral of the signal.
+Consonants (other than R,L,N and M) have a value above 40 and vowels have a value below 40. To determine the vowel
+a filter bank is used and the formants are extracted and matched to <a href="http://en.wikipedia.org/wiki/Formant#Formants_and_phonetics">this table</a> and determined.
+As for consonants, they can be divided into frictaves and plosives. Plosives are like p or b whereas frictaves are like
+s or z. Generally each band of the complexity coeficient (abs derivative over abs integral) can be matched to a small set of frictaves
+and plosives. The signal determines if it is a plosive or a frictave by watching the length of the utterance (plosives occur over short periods while frictaves over long).
+Finally the most appropriate character is chosen.</p>
         </section>
 
         <footer>

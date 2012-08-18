@@ -11,79 +11,28 @@ program.
 
 #include "Arduino.h"
 #include <math.h>
-class phoneme
-{
+#define SILENCE 92
 
+class signal{
 public:
-	phoneme(int v,int v1, int v2, int v3, int v4, int v10, int v11, int v12, int v13, int v14);
-	void debugPrint();
-	int loudness();
-	unsigned int vector[2][5];
-};
-
-class modelPhoneme
-{
-
-public:
-	modelPhoneme();
-	unsigned int mean[2][5];
-	unsigned int stdev[2][5];
-	int getDistance(phoneme p);
-};
-
-class uword
-{
-public:
-	uword();
-	void reset();
-	void debugPrint();
-	void attachPhoneme(phoneme P);
-	int confidence();
-	unsigned long len;
-	unsigned long vector[2][5];
-};
-class uspeech
-{
-public:
-	uspeech(int ipin);
-	phoneme get();
-	void calibrate();
-private:
-	int arr[32];//Main recording
-	int filter1[8],filter2[15],filter3[20],filter4[32];
-	unsigned int vector[2][5];
-	int pin;
+	int arr[32];
 	int calib;
-	int sumf2();
-	int dif2();
-	int sumf3();
-	int dif3();
-	int sumf4();
-	int dif4();
-	void resetAll();
+	signal(int port);
 	void sample();
-	void filterx1();
-	void filterx2();
-	void filterx3();
-	void filterx4();
-	int fmean(int freq, int start);
-	int sumOverall();
-	int difOverall();
-	void complexity();
-};
-class fingerprint
-{
-public:
-	fingerprint(uword utterance);
-	void debugPrint();
-	unsigned long finger[2][5];
-};
-class pfingerprint
-{
-public:
-	pfingerprint(phoneme utterance);
-	void debugPrint();
-	unsigned int finger[2][5];
+	unsigned int power();
+	unsigned int complexity(int power);
+	unsigned long fpowerex(int sum, int xtra);
+	int snr(int power);
+	void calibrate();
+	unsigned long filters[18], formants[3], intoned;
+	char getPhoneme();
+	void debugPrintFilter();
+	void voiceFormants();
+private:
+	int pin;
+	int mil;
+	bool silence;
+	void formantAnal();
 };
 
 #endif

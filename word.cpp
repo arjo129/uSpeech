@@ -21,9 +21,10 @@ bool in(char c, String s){
 	return isin;
 }
 int umatch(String ing, String desired){
+	int j;
 	if(abs(getSyllables(ing) - getSyllables(desired))<1){
-		int j,i;
-		while(i<ing.length){
+		int i;
+		while(i<ing.length()){
 			subChar(ing[i],desired[i]);
 			i++;
 		}
@@ -46,7 +47,7 @@ int subChar(char a, char b){
 	return mapChar(a) - mapChar(b);
 }
 int mapChar(char a){
-	if(a.uIsVowel()){
+	if(uIsVowel(a)){
 		return 0;
 	}
 	if(a == 'v'| a == 'p'){
@@ -75,6 +76,7 @@ String denoise(char c, String prev){
 					prev= prev+String(c);
 				}
 			}
+		}
 		else{
 			if(uIsPlosive(c)){
 				if(!uIsPlosive(prev[prev.length()-1])){

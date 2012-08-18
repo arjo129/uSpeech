@@ -1,11 +1,11 @@
 /*
-uspeech v.0.0.1
-2012 Arjo Chakravarty
-
-uspeech is a library that allows sounds to be classified into certain phonemes
-on the Arduino. This creates a simple beginning for a full scale voice recognition
-program.
-*/
+ uspeech v.0.0.1
+ 2012 Arjo Chakravarty
+ 
+ uspeech is a library that allows sounds to be classified into certain phonemes
+ on the Arduino. This creates a simple beginning for a full scale voice recognition
+ program.
+ */
 #ifndef uspeech_h
 #define uspeech_h
 
@@ -42,5 +42,6 @@ bool in(char c, String s);
 int umatch(String ing, String desired);
 int getSyllables(String ing);
 int mapChar(char a);
+int subChar(char a, char b);
 String denoise(char c, String prev);
 #endif

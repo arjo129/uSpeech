@@ -13,7 +13,7 @@ The library is quite intensive on the processor. Each sample collection takes ab
  - Plugs directly into an ``analogRead()`` port
 
 ## Documentation ##
-Documentation on this library is a work in progress. The GitHub wiki will have more on the library. 
+Head over to the [downloads](https://github.com/arjo129/uSpeech/downloads) section on github and you will find a pdf tutorial.
 
 ## Algorythm ##
 The library utilizes a special algorythm to enable speech detection. First the complexity of the signal is determined by taking

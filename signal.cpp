@@ -10,6 +10,7 @@ void signal::sample(){
 	int i = 0;
 	while ( i < 32){
 		arr[i] = analogRead(pin)-calib;	
+		i++;
 	}
 	
 }

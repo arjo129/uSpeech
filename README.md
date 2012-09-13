@@ -15,7 +15,7 @@ The library is quite intensive on the processor. Each sample collection takes ab
 ## Documentation ##
 Head over to the [downloads](https://github.com/arjo129/uSpeech/downloads) section on github and you will find a pdf tutorial.
 
-## Algorythm ##
+## Algorithm ##
 The library utilizes a special algorythm to enable speech detection. First the complexity of the signal is determined by taking
 the absolute derivative of the signal multiplying it by a fixed point saclar and then dividing it by the absolute integral of the signal.
 Consonants (other than R,L,N and M) have a value above 40 and vowels have a value below 40. To determine the vowel

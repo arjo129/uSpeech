@@ -47,3 +47,6 @@ void signal::debugPrintFilter(){
 	}
 	Serial.println("-----");
 }
+
+//void signal::goertzel(int freq){
+//}

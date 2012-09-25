@@ -25,11 +25,15 @@ int umatch(String ing, String desired){
 	if(abs(getSyllables(ing) - getSyllables(desired))<1){
 		int i;
 		while(i<ing.length()){
-			subChar(ing[i],desired[i]);
+			//WHY Doesn't this subChar function being executed?
+			// it's return value isn't being assigned anywhere.
+			// or is j assigned here?
+			j += subChar(ing[i],desired[i]);
 			i++;
 		}
 	}
 	else{
+		//Is this the only place where j is being changed?
 		j = 257;
 	}
 	return j;

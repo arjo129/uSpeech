@@ -28,6 +28,7 @@ public:
 	char getPhoneme();
 	void debugPrintFilter();
 	void voiceFormants();
+	//int goertzel(int freq)
 private:
 	int pin;
 	int mil;

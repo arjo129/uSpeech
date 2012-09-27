@@ -35,11 +35,12 @@ int umatch(String ing, String desired){
 	return j;
 }
 int getSyllables(String ing){
-	int i,s;
+	int i = 0,s;
 	while(i<ing.length()){
 		if((!IsVowel(ing[i]))&&IsVowel(ing[i-1])){
 			s++;
 		}
+		i++;
 	}
 	return s;
 }

@@ -35,14 +35,20 @@ private:
 	bool silence;
 	void formantAnal();
 };
+//With the emminent release of Arduino Due, it makes no sense to not include
+//an fft based algorythm
+class microphone {
+public:
+	microphone::microphone(int pin);
+	void sample();
+	unsigned int complexity();
+	void calibarate();
+	char match();
+private:
+	char data[128];
+	char calib;
+	int port;
+};
 
-bool IsVowel(char c);
-bool uIsVowel(char c);
-bool uIsPlosive(char c);
-bool in(char c, String s);
-int umatch(String ing, String desired);
-int getSyllables(String ing);
-int mapChar(char a);
-int subChar(char a, char b);
-String denoise(char c, String prev);
+
 #endif

@@ -13,7 +13,7 @@ bool in(char c, String s){
 	int i = 0;
 	bool isin = false;
 	while(i<s.length()){
-		if(i == s[i]){
+		if(c == s[i]){
 			isin =true;
 		}
 		i++;

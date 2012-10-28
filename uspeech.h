@@ -13,30 +13,8 @@
 #include <math.h>
 #define SILENCE 92
 
-class signal{
-public:
-	int arr[32];
-	int calib;
-	signal(int port);
-	void sample();
-	unsigned int power();
-	unsigned int complexity(int power);
-	unsigned long fpowerex(int sum, int xtra);
-	int snr(int power);
-	void calibrate();
-	unsigned long filters[18], formants[3], intoned;
-	char getPhoneme();
-	void debugPrintFilter();
-	void voiceFormants();
-	int goertzel(int freq);
-private:
-	int pin;
-	int mil;
-	bool silence;
-	void formantAnal();
-};
-//With the emminent release of Arduino Due, it makes no sense to not include
-//an fft based algorythm
+//Updated more accurate & easier to use class
+//Memory footprint increased however will continue running on Arduino UNO
 class microphone {
 public:
 	microphone::microphone(int pin);

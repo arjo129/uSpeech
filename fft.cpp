@@ -1,5 +1,5 @@
 #include <avr/pgmspace.h>
-#include "fft.h"
+#include "uspeech.h"
 #include <Arduino.h>
 
 /* fix_fft.c - Fixed-point in-place Fast Fourier Transform  */

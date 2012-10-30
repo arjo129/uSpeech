@@ -1,3 +1,4 @@
+#include "uspeech.h"
 void microphone::sample(){
 	char i = 0;
 	while(i < 128){
@@ -17,6 +18,18 @@ void microphone::calibarate(){
 	calib = (analogRead(port)+analogRead(port)+analogRead(port)+analogRead(port))/4;
 }
 char microphone::match(){
+	if(power()>SILENCE){
+		fix_fftr(data,7,NULL);
+		
+	}
+}
+int power(){
+	int power=0;
+	char i = 0;
+	while(i < 128){
+		power += abs((int)data[i]);
+	}
+	return power;
 }
 microphone::microphone(int pin){
 	port = pin;

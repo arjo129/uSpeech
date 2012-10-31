@@ -1,4 +1,9 @@
 #include "uspeech.h"
+/*<c> Arjo Chakravarty MIT License
+ *This file contains the peak detection and sorting functions
+ */
+
+
 /** Extract coefficients
  *  Finds the dominant frequencies of a microphone 
  *	1 - Takes the FFT and finds peaks	[done]

@@ -1,5 +1,5 @@
 #include "uspeech.h"
-/*<c> Arjo Chakravart MIT License
+/*<c> Arjo Chakravarty MIT License
  *
  *This file contains The core functions of the library
  */

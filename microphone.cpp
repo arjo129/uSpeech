@@ -7,10 +7,14 @@ microphone::microphone(int pin){
 	port = pin;
 }
 void microphone::sample(){
-	char i = 0;
+	//Serial.println("Called sample()");
+	
+	int i = 0;
 	while(i < 128){
 		data[i] = (analogRead(port))/4-calib/4;
+		i++;
 	}
+	//Serial.println("Sample completed");
 }
 /* This is the complexity function
  * 
@@ -58,9 +62,10 @@ char microphone::match(){
 }
 int microphone::power(){
 	int power=0;
-	char i = 0;
+	int i = 0;
 	while(i < 128){
 		power += abs((int)data[i]);
+		i++;
 	}
 	return power;
 }

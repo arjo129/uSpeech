@@ -11,7 +11,7 @@
 
 #include "Arduino.h"
 #include <math.h>
-#define SILENCE 92
+#define SILENCE 1
 
 //Taken from the 8bit FFT on the arduino Forums. See FFT.cpp fo
 //Full credit

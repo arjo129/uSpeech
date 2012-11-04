@@ -13,26 +13,6 @@
 #include <math.h>
 #define SILENCE 92
 
-//Updated more accurate & easier to use class
-//Memory footprint increased however will continue running on Arduino UNO
-class microphone {
-public:
-	microphone::microphone(int pin); //Microphone class initialization
-	void sample();//Microphone sampling, loads stuff into buffer
-	unsigned int complexity(); // Good old complexity function
-	void calibarate(); //used to calibrate microphone
-	char match(); //get a phoneme
-	
-private:
-	char data[128]; //The buffer containing raw data/fft of data
-	char dominantfreq[5]; //Extracted "fingerprint"
-	int calib; //
-	int port; //the analog in port of the microphone
-	void extractCoefficients(); //The coefficients act as finger prints
-};
-
-
-
 //Taken from the 8bit FFT on the arduino Forums. See FFT.cpp fo
 //Full credit
 /*
@@ -60,5 +40,26 @@ int fix_fft(char fr[], char fi[], int m, int inverse);
  real and imaginary samples in the complex array.
  */
 int fix_fftr(char f[], int m, int inverse);
+
+//Updated more accurate & easier to use class
+//Memory footprint increased however will continue running on Arduino UNO
+class microphone {
+public:
+	microphone(int pin); //Microphone class initialization
+	void sample();//Microphone sampling, loads stuff into buffer
+	unsigned int complexity(); // Good old complexity function
+	void calibrate(); //used to calibrate microphone
+	char match(); //get a phoneme
+	void extractCoefficients(); //The coefficients act as finger prints
+	int power(); //Amplitude
+	char dominantfreq[5]; //Extracted "fingerprint"
+private:
+	char data[128]; //The buffer containing raw data/fft of data
+	int calib; //
+	int port; //the analog in port of the microphone
+	
+};
+
+
 
 #endif

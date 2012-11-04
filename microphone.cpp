@@ -1,12 +1,15 @@
 #include "uspeech.h"
-/*<c> Arjo Chakravarty MIT License
+/*<c> Arjo Chakravart MIT License
  *
  *This file contains The core functions of the library
  */
+microphone::microphone(int pin){
+	port = pin;
+}
 void microphone::sample(){
 	char i = 0;
 	while(i < 128){
-		data[i] = (analogRead())/4-calib/4;
+		data[i] = (analogRead(port))/4-calib/4;
 	}
 }
 /* This is the complexity function
@@ -24,7 +27,7 @@ unsigned int microphone::complexity(){
 	}
 	return (diff*100)/power;
 }
-void microphone::calibarate(){
+void microphone::calibrate(){
 	calib = (analogRead(port)+analogRead(port)+analogRead(port)+analogRead(port))/4;
 }
 /* This is the matching function
@@ -45,7 +48,7 @@ char microphone::match(){
 		//Step 2
 		extractCoefficients();
 		//Step 3
-		if(complexity>40){ //Vowels & liquids
+		if(complexity()>40){ //Vowels & liquids
 			/*TODO Matching functions*/
 		}
 		else{ //Consonants
@@ -53,7 +56,7 @@ char microphone::match(){
 		}
 	}
 }
-int power(){
+int microphone::power(){
 	int power=0;
 	char i = 0;
 	while(i < 128){
@@ -61,6 +64,4 @@ int power(){
 	}
 	return power;
 }
-microphone::microphone(int pin){
-	port = pin;
-}
+

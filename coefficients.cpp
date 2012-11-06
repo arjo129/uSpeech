@@ -9,71 +9,54 @@
  *	1 - Takes the FFT and finds peaks	[done]
  *  2 - Finds the top 5 peaks			[done]
  *	3 - Records their frequencies		[done]
- *	Status: Ready for testing
+ *  
+ *  
+ *	Status: Testing complete but function freezes
  *  Input: none
  *	Return: none
  */
 void microphone::extractCoefficients(){
-	char peaks[127]; // Storage of all peaks
+	char dominantfreqp[5];
 	int i =1;
-
 	while(i<128){
 		if(data[i-1]<data[i]&&data[i]>data[i-1]){
 			peaks[i] = data[i];
+			if(dominantfreqp[0]<data[i]){
+				dominantfreq[0]=i;
+				dominantfreqp[0] =data[i];
+			}
+			else{ 
+				if (dominantfreqp[1]<data[i]) {
+					dominantfreq[1] =i;
+					dominantfreqp[1] =data[i];
+				}
+				else{
+					if (dominantfreqp[2]<data[i]) {
+						dominantfreq[2] =i;
+						dominantfreqp[2] =data[i];
+					}
+					else{
+						if (dominantfreqp[3]<data[i]) {
+							dominantfreq[3] =i;
+							dominantfreqp[3] =data[i];
+						}
+						else{
+							if (dominantfreqp[4]<data[i]) {
+								dominantfreq[4] =i;
+								dominantfreqp[4] =data[i];
+							}
+							else{
+								if (dominantfreqp[5]<data[i]) {
+									dominantfreq[5] =i;
+									dominantfreqp[5] =data[i];
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 		i++;
 	}
-	i = 0;
-	char maxv=0,maxn;
-	while(i<127){
-		if(peaks[i]>maxv){
-			maxv = peaks[i];
-			maxn = i;
-		}
-		i++;
-	}
-	dominantfreq[0]=maxn;
-	peaks[maxn] = 0;
-	maxv=0,maxn=0;
-	i =0;
-	while(i<127){
-		if(peaks[i]>maxv){
-			maxv = peaks[i];
-			maxn = i;
-		}
-		i++;
-	}i = 0;
-	dominantfreq[1]=maxn;
-	peaks[maxn] = 0;
-	maxv=0,maxn=0;
-	while(i<127){
-		if(peaks[i]>maxv){
-			maxv = peaks[i];
-			maxn = i;
-		}
-		i++;
-	}i = 0;
-	dominantfreq[2]=maxn;
-	peaks[maxn] = 0;
-	maxv=0,maxn=0;
-	while(i<127){
-		if(peaks[i]>maxv){
-			maxv = peaks[i];
-			maxn = i;
-		}
-		i++;
-	}i = 0;
-	dominantfreq[3]=maxn;
-	peaks[maxn] = 0;
-	maxv=0,maxn=0;
-	while(i<127){
-		if(peaks[i]>maxv){
-			maxv = peaks[i];
-			maxn = i;
-		}
-		i++;
-	}i = 0;
-	dominantfreq[4]=maxn;
-	peaks[maxn] = 0;
 	
 }

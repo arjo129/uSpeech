@@ -11,7 +11,13 @@ void microphone::sample(){
 	
 	int i = 0;
 	while(i < 128){
-		data[i] = (analogRead(port))/4-calib/4;
+		int k =(analogRead(port))-calib;
+		if(abs(k)>=128){
+		}
+		else{
+			data[i] = k;
+			Serial.println(k);
+		}
 		i++;
 	}
 	//Serial.println("Sample completed");

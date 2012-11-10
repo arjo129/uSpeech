@@ -58,12 +58,13 @@ char microphone::match(){
 		//Step 2
 		extractCoefficients();
 		//Step 3
+		/*
 		if(complexity()>40){ //Vowels & liquids
-			/*TODO Matching functions*/
+			//TODO Matching functions
 		}
 		else{ //Consonants
 			
-		}
+		}*/
 	}
 	return 'h';
 }

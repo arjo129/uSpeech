@@ -23,30 +23,31 @@ void microphone::extractCoefficients(){
 	dominantfreqp[2] = 0;
 	dominantfreqp[3] = 0;
 	dominantfreqp[4] = 0;
-	while(i<128){
+	while(i<25){
 		if(data[i-1]<data[i]&&data[i]>data[i-1]){
 			if(dominantfreqp[0]<data[i]){
-				dominantfreq[0]=i;
+				dominantfreq[0]= (float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
+				
 				dominantfreqp[0] =data[i];
 			}
 			else{ 
 				if (dominantfreqp[1]<data[i]) {
-					dominantfreq[1] =i;
+					dominantfreq[1] = (float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
 					dominantfreqp[1] =data[i];
 				}
 				else{
 					if (dominantfreqp[2]<data[i]) {
-						dominantfreq[2] =i;
+						dominantfreq[2] = (float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
 						dominantfreqp[2] =data[i];
 					}
 					else{
 						if (dominantfreqp[3]<data[i]) {
-							dominantfreq[3] =i;
+							dominantfreq[3] = (float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
 							dominantfreqp[3] =data[i];
 						}
 						else{
 							if (dominantfreqp[4]<data[i]) {
-								dominantfreq[4] =i;
+								dominantfreq[4] = (float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
 								dominantfreqp[4] =data[i];
 							}else{}
 						}
@@ -56,5 +57,8 @@ void microphone::extractCoefficients(){
 		}
 		i++;
 	}
-	
+	/*
+	 Serial.println(dominantfreq[0]);
+	 Serial.println(dominantfreq[1]);
+	 Serial.println(dominantfreq[2]);*/
 }

@@ -11,7 +11,7 @@
 
 #include "Arduino.h"
 #include <math.h>
-#define SILENCE 1
+#define SILENCE 1100
 
 //Taken from the 8bit FFT on the arduino Forums. See FFT.cpp fo
 //Full credit
@@ -52,7 +52,7 @@ public:
 	char match(); //get a phoneme
 	void extractCoefficients(); //The coefficients act as finger prints
 	int power(); //Amplitude
-	char dominantfreq[5]; //Extracted "fingerprint"
+	float dominantfreq[5]; //Extracted "fingerprint" (yes, they are floats)
 private:
 	char data[128]; //The buffer containing raw data/fft of data
 	int calib; //

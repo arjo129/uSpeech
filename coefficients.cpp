@@ -18,9 +18,9 @@
 void microphone::extractCoefficients(){
 	char dominantfreqp[5];
 	int i =1;
+	
 	while(i<128){
 		if(data[i-1]<data[i]&&data[i]>data[i-1]){
-			peaks[i] = data[i];
 			if(dominantfreqp[0]<data[i]){
 				dominantfreq[0]=i;
 				dominantfreqp[0] =data[i];

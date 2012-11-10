@@ -65,6 +65,7 @@ char microphone::match(){
 			
 		}
 	}
+	return 'h';
 }
 int microphone::power(){
 	int power=0;

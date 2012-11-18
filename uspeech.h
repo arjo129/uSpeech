@@ -50,8 +50,9 @@ public:
 	unsigned int complexity(); // Good old complexity function
 	void calibrate(); //used to calibrate microphone
 	char match(); //get a phoneme
-	void extractCoefficients(); //The coefficients act as finger prints
+	void extractCoefficients(int len); //The coefficients act as finger prints
 	int power(); //Amplitude
+	void processCoeffs();
 	float dominantfreq[5]; //Extracted "fingerprint" (yes, they are floats)
 private:
 	char data[128]; //The buffer containing raw data/fft of data

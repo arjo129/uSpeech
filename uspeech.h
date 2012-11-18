@@ -47,13 +47,15 @@ class microphone {
 public:
 	microphone(int pin); //Microphone class initialization
 	void sample();//Microphone sampling, loads stuff into buffer
-	unsigned int complexity(); // Good old complexity function
+	float complexity(); // Good old complexity function
 	void calibrate(); //used to calibrate microphone
 	char match(); //get a phoneme
 	void extractCoefficients(int len); //The coefficients act as finger prints
 	int power(); //Amplitude
 	void processCoeffs();
+	char oldMatch(); //Old matching function
 	float dominantfreq[5]; //Extracted "fingerprint" (yes, they are floats)
+	float coeff;
 private:
 	char data[128]; //The buffer containing raw data/fft of data
 	int calib; //

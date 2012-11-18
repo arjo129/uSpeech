@@ -4,7 +4,7 @@ void microphone::processCoeffs(){
 	//Lower frequencies more important, make them larger
 	while(i<5){
 		if(dominantfreq[i]!=0){
-			dominantfreq[i] = 128 - dominantfreq[i];
+			dominantfreq[i] = sq(25 - dominantfreq[i]);
 		}
 		i++;
 	}

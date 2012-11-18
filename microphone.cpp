@@ -16,7 +16,7 @@ void microphone::sample(){
 		}
 		else{
 			data[i] = k;
-			Serial.println(k);
+			//Serial.println(k);
 		}
 		i++;
 	}
@@ -34,6 +34,7 @@ unsigned int microphone::complexity(){
 	while(i < 128){
 		power += abs((int)data[i]);
 		diff += abs((int)(data[i]-data[i-1]));
+		i++;
 	}
 	return (diff*100)/power;
 }
@@ -54,17 +55,16 @@ void microphone::calibrate(){
 char microphone::match(){
 	if(power()>SILENCE){
 		//Step 1
-		fix_fftr(data,7,NULL);
+		int co = complexity();
 		//Step 2
-		extractCoefficients();
+		fix_fftr(data,7,NULL);
 		//Step 3
-		/*
-		if(complexity()>40){ //Vowels & liquids
-			//TODO Matching functions
+		if(co>40){ //fricatives
+			extractCoefficients(25);
 		}
-		else{ //Consonants
-			
-		}*/
+		else{ 
+			extractCoefficients(10);
+		}
 	}
 	return 'h';
 }

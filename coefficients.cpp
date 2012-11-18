@@ -15,7 +15,7 @@
  *  Input: none
  *	Return: none
  */
-void microphone::extractCoefficients(){
+void microphone::extractCoefficients(int len){
 	char dominantfreqp[5];
 	int i =1;
 	dominantfreqp[0] = 0;
@@ -23,31 +23,31 @@ void microphone::extractCoefficients(){
 	dominantfreqp[2] = 0;
 	dominantfreqp[3] = 0;
 	dominantfreqp[4] = 0;
-	while(i<25){
+	while(i<len){
 		if(data[i-1]<data[i]&&data[i]>data[i-1]){
 			if(dominantfreqp[0]<data[i]){
-				dominantfreq[0]= (float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
+				dominantfreq[0]= 1+(float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
 				
 				dominantfreqp[0] =data[i];
 			}
 			else{ 
 				if (dominantfreqp[1]<data[i]) {
-					dominantfreq[1] = (float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
+					dominantfreq[1] = 1+(float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
 					dominantfreqp[1] =data[i];
 				}
 				else{
 					if (dominantfreqp[2]<data[i]) {
-						dominantfreq[2] = (float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
+						dominantfreq[2] = 1+(float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
 						dominantfreqp[2] =data[i];
 					}
 					else{
 						if (dominantfreqp[3]<data[i]) {
-							dominantfreq[3] = (float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
+							dominantfreq[3] = 1+(float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
 							dominantfreqp[3] =data[i];
 						}
 						else{
 							if (dominantfreqp[4]<data[i]) {
-								dominantfreq[4] = (float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
+								dominantfreq[4] = 1+(float)i+(((float)(data[i-1]-data[i+1]))/((float)(data[i-1]-2*data[i]+data[i+1])))/2;
 								dominantfreqp[4] =data[i];
 							}else{}
 						}

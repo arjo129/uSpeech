@@ -27,7 +27,9 @@ char signal::getPhoneme(){
 							if(coeff>90){
 								return 's';
 							}
-							return 'm';
+							else{
+								return 'm';
+							}
 						}
 					}
 				}

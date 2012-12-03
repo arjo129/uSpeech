@@ -13,8 +13,10 @@ The library is quite intensive on the processor. Each sample collection takes ab
  - Plugs directly into an ``analogRead()`` port
 
 ## Documentation ##
-Head over to the [downloads](https://github.com/arjo129/uSpeech/downloads) section on github and you will find a pdf tutorial.
 
+Commit 40 and above do not have appropriate documentation. To use µSpeech, download a copy of commit 38. 
+Head over to the [downloads](https://github.com/arjo129/uSpeech/downloads) section on github and you will find a pdf tutorial.
+I'm working on closing the gap in docs please do be patient.
 ## Algorithm ##
 The library utilizes a special algorythm to enable speech detection. First the complexity of the signal is determined by taking
 the absolute derivative of the signal multiplying it by a fixed point saclar and then dividing it by the absolute integral of the signal.

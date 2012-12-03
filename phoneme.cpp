@@ -3,7 +3,7 @@
 char signal::getPhoneme(){
 	sample();
 	if(power()>SILENCE){
-		coeff = complexity(power());
+		int coeff = complexity(power()); //Thank you dylan barth
 		if(coeff<30 && coeff>20){
 			return 'u';
 		}

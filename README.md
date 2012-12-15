@@ -27,4 +27,4 @@ s or z. Generally each band of the complexity coeficient (abs derivative over ab
 and plosives. The signal determines if it is a plosive or a frictave by watching the length of the utterance (plosives occur over short periods while frictaves over long).
 Finally the most appropriate character is chosen.
 
-- [Return to main page] arjo129.github.com
+- [Return to main page](http://arjo129.github.com)

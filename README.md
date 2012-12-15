@@ -26,3 +26,5 @@ As for consonants, they can be divided into frictaves and plosives. Plosives are
 s or z. Generally each band of the complexity coeficient (abs derivative over abs integral) can be matched to a small set of frictaves
 and plosives. The signal determines if it is a plosive or a frictave by watching the length of the utterance (plosives occur over short periods while frictaves over long).
 Finally the most appropriate character is chosen.
+
+- [Return to main page] arjo129.github.com

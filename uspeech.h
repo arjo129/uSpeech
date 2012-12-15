@@ -25,6 +25,7 @@ public:
 	int snr(int power);
 	void calibrate();
 	unsigned long filters[18], formants[3], intoned;
+	unsigned int overview[7];
 	char getPhoneme();
 	void debugPrintFilter();
 	void voiceFormants();

@@ -14,7 +14,7 @@ The library is quite intensive on the processor. Each sample collection takes ab
 
 ## Documentation ##
 
-Head over to the [wiki](https://github.com/arjo129/uSpeech/downloads) and you will find most of the documentation required.
+Head over to the [wiki](https://github.com/arjo129/uSpeech/wiki) and you will find most of the documentation required.
 
 ## Algorithm ##
 The library utilizes a special algorythm to enable speech detection. First the complexity of the signal is determined by taking

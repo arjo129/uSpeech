@@ -18,10 +18,12 @@ char signal::getPhoneme(){
 			f++;
 		}
 		coeff /= 7;
+#if F_DETECTION > 0
         micPower = 5 * maxPower() + (100 - 5) * micPower;
         if (micPower>95) {
             return 'f';
         }
+#endif
 		if(coeff<30 && coeff>20){
 			return 'u';
 		}

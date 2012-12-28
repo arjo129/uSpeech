@@ -1,5 +1,5 @@
 /*
- uspeech v.0.0.1
+ uspeech v.1.9.2 (2.0betaRC1)
  2012 Arjo Chakravarty
  
  uspeech is a library that allows sounds to be classified into certain phonemes
@@ -12,7 +12,7 @@
 #include "Arduino.h"
 #include <math.h>
 #define SILENCE 92
-
+#define F_DETECTION 0
 class signal{
 public:
 	int arr[32];

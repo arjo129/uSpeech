@@ -51,6 +51,17 @@ unsigned long signal::fpowerex(int sum, int xtra){
 	}
 	return j;
 }
+unsigned int signal::maxPower(){
+    int i =0;
+    unsigned int max = 0;
+    while (i<32){
+        if(max<abs(arr[i])){
+            max = abs(arr[i]);
+        }
+        i++;
+    }
+    return max;
+}
 int signal::snr(int power){
 	int i =0,j=0;
 	int mean =power/32;

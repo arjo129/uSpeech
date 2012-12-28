@@ -19,6 +19,7 @@ public:
 	int calib;
 	signal(int port);
 	void sample();
+    unsigned int maxPower();
 	unsigned int power();
 	unsigned int complexity(int power);
 	unsigned long fpowerex(int sum, int xtra);
@@ -30,6 +31,7 @@ public:
 	void debugPrintFilter();
 	void voiceFormants();
 	int goertzel(int freq);
+    unsigned int micPower;
 private:
 	int pin;
 	int mil;

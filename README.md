@@ -19,9 +19,7 @@ Head over to the [wiki](https://github.com/arjo129/uSpeech/wiki) and you will fi
 ## Algorithm ##
 The library utilizes a special algorythm to enable speech detection. First the complexity of the signal is determined by taking
 the absolute derivative of the signal multiplying it by a fixed point saclar and then dividing it by the absolute integral of the signal.
-Consonants (other than R,L,N and M) have a value above 40 and vowels have a value below 40. To determine the vowel
-a filter bank is used and the formants are extracted and matched to [this table](http://en.wikipedia.org/wiki/Formant#Formants_and_phonetics) and determined.
-As for consonants, they can be divided into frictaves and plosives. Plosives are like p or b whereas frictaves are like
+Consonants (other than R,L,N and M) have a value above 40 and vowels have a value below 40. Consonants, they can be divided into frictaves and plosives. Plosives are like p or b whereas frictaves are like
 s or z. Generally each band of the complexity coeficient (abs derivative over abs integral) can be matched to a small set of frictaves
 and plosives. The signal determines if it is a plosive or a frictave by watching the length of the utterance (plosives occur over short periods while frictaves over long).
 Finally the most appropriate character is chosen.

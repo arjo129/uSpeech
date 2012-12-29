@@ -31,7 +31,8 @@ public:
 	char getPhoneme(); 
 	void debugPrintFilter(); //Todo: Remove
 	void voiceFormants(); //Todo: Remove
-	int goertzel(int freq);
+	//void lowPass(int freq); Todo: Implement moving average low pass filter.
+    int goertzel(int freq);
     
 private:
 	int pin;

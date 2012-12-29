@@ -16,7 +16,7 @@ void loop(){
     voice.sample();
     char p = voice.getPhoneme();
     if(p!=' '){
-      if((p=='s'|p=='h')){
+      if((p=='f')){
           newline = true;
       }
       else{

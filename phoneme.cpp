@@ -19,8 +19,8 @@ char signal::getPhoneme(){
 		}
 		coeff /= 7;
 #if F_DETECTION > 0
-        micPower = 5 * maxPower() + (100 - 5) * micPower;
-        if (micPower>95) {
+        micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
+        if (micPower>40) {
             return 'f';
         }
 #endif

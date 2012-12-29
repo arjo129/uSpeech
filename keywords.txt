@@ -1,4 +1,4 @@
-﻿#######################################
+#######################################
 # Syntax Coloring Map For uSpeech
 #######################################
 
@@ -10,15 +10,17 @@
 # Methods and Functions (KEYWORD2)
 #######################################
 
-signal	KEYWORD2
-
+getPhoneme	KEYWORD2
+snr		KEYWORD2
+sample		KEYWORD2
+calibrate	KEYWORD2
 #######################################
 # Instances (KEYWORD2)
 #######################################
 
-uspeech	KEYWORD2
+signal 		KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
 #######################################
-
+micPower	LITERAL1

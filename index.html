@@ -46,7 +46,7 @@
 <li>Small memory footprint</li>
 <li>Arduino Compatible</li>
 <li>No training required</li>
-<li>Fixed point arithmetic</li>
+<li>Fixed point arithmetic (not anymore)</li>
 <li>30% - 40% accuracy if based on phonemes, up to 80% if based on words.</li>
 <li>Plugs directly into an <code>analogRead()</code> port</li>
 </ul><h2>Documentation</h2>
@@ -57,9 +57,7 @@
 
 <p>The library utilizes a special algorythm to enable speech detection. First the complexity of the signal is determined by taking
 the absolute derivative of the signal multiplying it by a fixed point saclar and then dividing it by the absolute integral of the signal.
-Consonants (other than R,L,N and M) have a value above 40 and vowels have a value below 40. To determine the vowel
-a filter bank is used and the formants are extracted and matched to <a href="http://en.wikipedia.org/wiki/Formant#Formants_and_phonetics">this table</a> and determined.
-As for consonants, they can be divided into frictaves and plosives. Plosives are like p or b whereas frictaves are like
+Consonants (other than R,L,N and M) have a value above 40 and vowels have a value below 40. Consonants, they can be divided into frictaves and plosives. Plosives are like p or b whereas frictaves are like
 s or z. Generally each band of the complexity coeficient (abs derivative over abs integral) can be matched to a small set of frictaves
 and plosives. The signal determines if it is a plosive or a frictave by watching the length of the utterance (plosives occur over short periods while frictaves over long).
 Finally the most appropriate character is chosen.</p>

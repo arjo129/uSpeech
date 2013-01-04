@@ -20,7 +20,7 @@ char signal::getPhoneme(){
 		coeff /= 7;
 #if F_DETECTION > 0
         micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
-        if (micPower>40) {
+        if (micPower>37) {
             return 'f';
         }
 #endif
@@ -28,19 +28,19 @@ char signal::getPhoneme(){
 			return 'u';
 		}
 		else {
-			if(coeff<33&&coeff>25){
+			if(coeff<33){
 				return 'e';
 			}
 			else{
-				if(coeff<46&&coeff>33){
+				if(coeff<46){
 					return 'o';
 				}
 				else{
-					if(coeff>50&&coeff<65){
+					if(coeff<60){
 						return 'v';
 					}
 					else{
-						if(80>coeff>70){
+						if(coeff<80){
 							return 'h';
 						}
 						else{

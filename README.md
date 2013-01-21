@@ -17,7 +17,7 @@ The library is quite intensive on the processor. Each sample collection takes ab
 Head over to the [wiki](https://github.com/arjo129/uSpeech/wiki) and you will find most of the documentation required.
 
 ## Algorithm ##
-The library utilizes a special algorythm to enable speech detection. First the complexity of the signal is determined by taking
+The library utilizes a special algorithm to enable speech detection. First the complexity of the signal is determined by taking
 the absolute derivative of the signal multiplying it by a fixed point saclar and then dividing it by the absolute integral of the signal.
 Consonants (other than R,L,N and M) have a value above 40 and vowels have a value below 40. Consonants, they can be divided into frictaves and plosives. Plosives are like p or b whereas frictaves are like
 s or z. Generally each band of the complexity coeficient (abs derivative over abs integral) can be matched to a small set of frictaves

@@ -1,8 +1,11 @@
 #include "uspeech.h"
-
+/**
+* The recognizer function
+*/
 char signal::getPhoneme(){
 	sample();
 	if(power()>SILENCE){
+		//Low pass filter for noise removal
 		int k = complexity(power()); 
 		overview[6] = overview[5];
 		overview[5] = overview[4];
@@ -18,12 +21,17 @@ char signal::getPhoneme(){
 			f++;
 		}
 		coeff /= 7;
+		//Serial.println(coeff); //Use this for debugging
 #if F_DETECTION > 0
         micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
-        if (micPower>37) {
+        //Serial.println(micPower)//If you are having trouble with fs
+        
+        if (micPower > 37/*Replace this value (37) with your own*/) {
             return 'f';
         }
 #endif
+	//Twiddle with the numbers here if your getting false triggers
+	//This is the main recognizer part
 		if(coeff<30 && coeff>20){
 			return 'u';
 		}

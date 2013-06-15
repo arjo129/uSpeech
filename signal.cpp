@@ -1,11 +1,19 @@
 #include "uspeech.h"
-
+/**
+ * Constructor 
+ */
 signal::signal(int port){
 	int pin = port;
 }
+/**
+ * Calibration of background based on averaging 
+ */
 void signal::calibrate(){
-	calib = (analogRead(pin)+analogRead(pin)+analogRead(pin)+analogRead(pin))/4;
+	calib = (analogRead(pin)+analogRead(pin)+analogRead(pin)+analogRead(pin))/4; //acquire background noise
 }
+/**
+ * Sampling of the sound: Based on storing values minus average background noise
+ */
 void signal::sample(){
 	int i = 0;
 	while ( i < 32){
@@ -14,6 +22,9 @@ void signal::sample(){
 	}
 	
 }
+/**
+ * An estimate of background noise
+ */
 unsigned int signal::power(){
 	unsigned int j = 0;
 	char i = 0;
@@ -24,6 +35,9 @@ unsigned int signal::power(){
 	}
 	return j;
 }
+/**
+ * power/abs(sum of derivative)
+ */
 unsigned int signal::complexity(int power){
 	unsigned int j = 0;
 	int i = 1;
@@ -33,6 +47,7 @@ unsigned int signal::complexity(int power){
 	}
 	return (j*100)/power;
 }
+
 unsigned long signal::fpowerex(int sum, int xtra){
 	
 	int i = sum;
@@ -51,6 +66,9 @@ unsigned long signal::fpowerex(int sum, int xtra){
 	}
 	return j;
 }
+/**
+* Point of maximum amplitude
+*/
 unsigned int signal::maxPower(){
     int i =0;
     unsigned int max = 0;

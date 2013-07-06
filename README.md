@@ -37,7 +37,9 @@ Documentation in other languages are welcome. I will be translating to spanish a
 - [Porting](https://github.com/arjo129/uSpeech/wiki/Porting)
 - [How it works](https://github.com/arjo129/uSpeech/wiki/How-%C2%B5Speech-Detects-Phonemes) [Incomplete]
 - [Trouble Shooting](https://github.com/arjo129/uSpeech/wiki/Trouble-shooting)
+
 ## Testing ##
 There is one test: [The LED Test](https://github.com/arjo129/uSpeech/wiki/Voice-controlled-LED)
+
 ## License ##
 See License.txt

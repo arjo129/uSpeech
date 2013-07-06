@@ -33,7 +33,10 @@ Finally the most appropriate character is chosen.
 
 ## Contributing ##
 Documentation in other languages are welcome. I will be translating to spanish and chinese (simplified) but the more the merrier. Have a look at the following sections before doing anything:
-
+- [API reference](https://github.com/arjo129/uSpeech/wiki/API-reference)
+- [Porting](https://github.com/arjo129/uSpeech/wiki/Porting)
+- [How it works](https://github.com/arjo129/uSpeech/wiki/How-%C2%B5Speech-Detects-Phonemes) [Incomplete]
+- [Trouble Shooting](https://github.com/arjo129/uSpeech/wiki/Trouble-shooting)
 ## Testing ##
 There is one test: [The LED Test](https://github.com/arjo129/uSpeech/wiki/Voice-controlled-LED)
 ## License ##

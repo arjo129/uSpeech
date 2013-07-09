@@ -17,11 +17,11 @@ class signal{
 public:
 	int arr[32];
 	int calib;
+	unsigned int avgPower; //Todo: Implement in maxPower (for optimization)
 	signal(int port);
-    int micPower;
+    	int micPower;
 	void sample();
     	unsigned int maxPower();
-    	unsigned int avgPower(); //Todo: Implement
 	unsigned int power();
 	unsigned int complexity(int power);
 	unsigned long fpowerex(int sum, int xtra); //Todo: Remove

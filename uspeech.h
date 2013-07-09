@@ -37,6 +37,7 @@ public:
 private:
 	int pin;
 	int mil;
+	int maxPos;
 	bool silence;
 	void formantAnal(); //Todo: Remove
 };

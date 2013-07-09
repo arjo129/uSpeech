@@ -20,7 +20,8 @@ public:
 	signal(int port);
     int micPower;
 	void sample();
-    unsigned int maxPower();
+    	unsigned int maxPower();
+    	unsigned int avgPower(); //Todo: Implement
 	unsigned int power();
 	unsigned int complexity(int power);
 	unsigned long fpowerex(int sum, int xtra); //Todo: Remove

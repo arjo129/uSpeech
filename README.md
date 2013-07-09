@@ -38,6 +38,9 @@ Documentation in other languages are welcome. I will be translating to spanish a
 - [How it works](https://github.com/arjo129/uSpeech/wiki/How-%C2%B5Speech-Detects-Phonemes) [Incomplete]
 - [Trouble Shooting](https://github.com/arjo129/uSpeech/wiki/Trouble-shooting)
 
+To get started hacking on this project you should make all changes to the 3.0-workingBranch branch. If you look at the file uspeech.h
+there are a number of todos listed. Just fork the branch complete a todo and file a pull request.
+
 ## Testing ##
 There is one test: [The LED Test](https://github.com/arjo129/uSpeech/wiki/Voice-controlled-LED)
 

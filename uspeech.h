@@ -40,6 +40,7 @@ private:
 	int maxPos;
 	bool silence;
 	void formantAnal(); //Todo: Remove
+	void zeroCrossingSearch();
 };
 
 

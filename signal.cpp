@@ -75,6 +75,7 @@ unsigned int signal::maxPower(){
     while (i<32){
         if(max<abs(arr[i])){
             max = abs(arr[i]);
+            maxPos = i;
         }
         i++;
         avgPower+=arr[i];
@@ -90,4 +91,28 @@ int signal::snr(int power){
 		i++;
 	}
 	return sqrt(j/mean)/power;
+}
+void signal::zeroCrossingSearch(){
+	int i=maxPos
+	int prev = arr[i];
+	int upper = 0;
+	int lower = 0;
+	while (i<32){
+		prev = arr[i]-avgPower;
+		if(prev<0){
+			upper = i;
+			i = 33; //Break out of loop
+		}
+		i++;
+	}
+	int i=maxPos;
+	while (i>0){
+		prev = arr[i]-avgPower;
+		if(prev<0){
+			lower = i;
+			i = 33; //Break out of loop
+		}
+		i--;
+	}
+	vowelRatio = (upper-i)*100/lower-i;
 }

@@ -13,11 +13,12 @@
 #include <math.h>
 #define SILENCE 92
 #define F_DETECTION 3
+#define F_CONSTANT 37
 class signal{
 public:
 	int arr[32];
 	int calib;
-	unsigned int avgPower; //Todo: Implement in maxPower (for optimization)
+	unsigned int avgPower; 
 	signal(int port);
     	int micPower;
 	void sample();

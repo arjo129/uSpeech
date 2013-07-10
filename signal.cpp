@@ -77,7 +77,9 @@ unsigned int signal::maxPower(){
             max = abs(arr[i]);
         }
         i++;
+        avgPower+=arr[i];
     }
+    avgPower /= 32;
     return max;
 }
 int signal::snr(int power){

@@ -26,12 +26,13 @@ char signal::getPhoneme(){
         micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
         //Serial.println(micPower)//If you are having trouble with fs
         
-        if (micPower > F_CONSTANT){/*Replace this value (37) with your own*/) {
+        if (micPower > F_CONSTANT/*Use the header file to change this*/) {
             return 'f';
         }
 #endif
 	//Twiddle with the numbers here if your getting false triggers
 	//This is the main recognizer part
+	//Todo: use move values to header file
 		if(coeff<30 && coeff>20){
 			return 'u';
 		}

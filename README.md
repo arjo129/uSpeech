@@ -35,7 +35,7 @@ Finally the most appropriate character is chosen.
 Documentation in other languages are welcome. I will be translating to spanish and chinese (simplified) but the more the merrier. Have a look at the following sections before doing anything:
 - [API reference](https://github.com/arjo129/uSpeech/wiki/API-reference)
 - [Porting](https://github.com/arjo129/uSpeech/wiki/Porting)
-- [How it works](https://github.com/arjo129/uSpeech/wiki/How-%C2%B5Speech-Detects-Phonemes) [Incomplete]
+- [How it works](https://github.com/arjo129/uSpeech/wiki/How-%C2%B5Speech-Detects-Phonemes) 
 - [Trouble Shooting](https://github.com/arjo129/uSpeech/wiki/Trouble-shooting)
 
 To get started hacking on this project you should make all changes to the 3.0-workingBranch branch. If you look at the file uspeech.h

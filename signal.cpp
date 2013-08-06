@@ -105,7 +105,7 @@ void signal::zeroCrossingSearch(){
 		}
 		i++;
 	}
-	int i=maxPos;
+	i=maxPos;
 	while (i>0){
 		prev = arr[i]-avgPower;
 		if(prev<0){

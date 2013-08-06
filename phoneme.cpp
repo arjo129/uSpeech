@@ -69,15 +69,4 @@ char signal::getPhoneme(){
 		return ' ';
 	}
 }
-void signal::formantAnal(){
-	int i = 0;
-	int k = 0;
-	while(i<18){
-		if((long)(filters[i]-filters[i-1]) > 0 & (long)(filters[i]-filters[i+1]) < 0){
-			if(k < 3){
-				formants[k] = i;
-			}
-		}
-		i++;
-	}
-}
+

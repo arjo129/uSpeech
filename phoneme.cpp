@@ -66,6 +66,7 @@ char signal::getPhoneme(){
 		}
 	}
 	else{
+        micPower = 0;
 		return ' ';
 	}
 }

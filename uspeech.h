@@ -13,6 +13,7 @@
 #include <math.h>
 #define SILENCE 1500
 #define F_DETECTION 3
+#define F_CONSTANT 37
 class signal{
 public:
 	int arr[32];
@@ -37,6 +38,7 @@ private:
 	int mil;
 	bool silence;
 	void formantAnal(); //Todo: Remove
+    int vowelRatio;
 };
 
 

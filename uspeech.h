@@ -16,7 +16,7 @@
 #define F_CONSTANT 37
 class signal{
 public:
-	int arr[32];
+	int arr[32],avgPower;
 	int calib;
 	signal(int port);
     int micPower;
@@ -32,10 +32,11 @@ public:
 	void debugPrintFilter(); //Todo: Remove
 	//void lowPass(int freq); Todo: Implement moving average low pass filter.
     int goertzel(int freq);
-    
+    void zeroCrossingSearch();
 private:
 	int pin;
 	int mil;
+    int maxPos;
 	bool silence;
 	void formantAnal(); //Todo: Remove
     int vowelRatio;

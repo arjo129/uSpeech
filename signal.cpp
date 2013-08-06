@@ -93,7 +93,7 @@ int signal::snr(int power){
 	return sqrt(j/mean)/power;
 }
 void signal::zeroCrossingSearch(){
-	int i=maxPos
+	int i=maxPos;
 	int prev = arr[i];
 	int upper = 0;
 	int lower = 0;

@@ -18,6 +18,7 @@ class signal{
 public:
 	int arr[32],avgPower;
 	int calib;
+    int testCoeff;
 	signal(int port);
     int micPower;
 	void sample();

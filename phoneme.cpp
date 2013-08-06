@@ -21,6 +21,7 @@ char signal::getPhoneme(){
 			f++;
 		}
 		coeff /= 7;
+        testCoeff = coeff;
 		//Serial.println(coeff); //Use this for debugging
 #if F_DETECTION > 0
         micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;

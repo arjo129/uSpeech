@@ -13,7 +13,7 @@
 #include <math.h>
 #define SILENCE 1500
 #define F_DETECTION 3
-#define F_CONSTANT 37
+#define F_CONSTANT 380
 class signal{
 public:
 	int arr[32],avgPower;
@@ -29,10 +29,9 @@ public:
 	int snr(int power);
 	void calibrate();
 	unsigned int overview[7];
-	char getPhoneme(); 
-	void debugPrintFilter(); //Todo: Remove
-	//void lowPass(int freq); Todo: Implement moving average low pass filter.
+	char getPhoneme(); //void lowPass(int freq); Todo: Implement moving average low pass filter.
     int goertzel(int freq);
+    int vowelRatio;
     void zeroCrossingSearch();
 private:
 	int pin;
@@ -40,7 +39,7 @@ private:
     int maxPos;
 	bool silence;
 	void formantAnal(); //Todo: Remove
-    int vowelRatio;
+    
 };
 
 

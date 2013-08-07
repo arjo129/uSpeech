@@ -31,6 +31,7 @@ char signal::getPhoneme(){
             return 'f';
         }
 #endif
+        zeroCrossingSearch();
 	//Twiddle with the numbers here if your getting false triggers
 	//This is the main recognizer part
 	//Todo: use move values to header file

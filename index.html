@@ -31,31 +31,40 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>uSpeech library</h1>
+        <h1>
+<a name="uspeech-library" class="anchor" href="#uspeech-library"><span class="octicon octicon-link"></span></a>uSpeech library</h1>
 
 <p>The uSpeech library provides an interface for voice recognition using the Arduino. It currently produces phonemes, often the library will produce junk phonemes. Please bare with it for the time being. A noise removal function is underway.</p>
 
-<h2>Minimum Requirements</h2>
+<h2>
+<a name="minimum-requirements" class="anchor" href="#minimum-requirements"><span class="octicon octicon-link"></span></a>Minimum Requirements</h2>
 
 <p>The library is quite intensive on the processor. Each sample collection takes about 3.2 milliseconds so pay close attention to the time. The library has been tested on the Arduino Uno (ATMega32). Each signal object uses up 160bytes. No real time scheduler should be used with this.</p>
 
-<h2>Features</h2>
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
 
 <ul>
 <li>Letter based recognition</li>
 <li>Small memory footprint</li>
 <li>Arduino Compatible</li>
-<li>No training required</li>
 <li>Fixed point arithmetic (not anymore)</li>
 <li>30% - 40% accuracy if based on phonemes, up to 80% if based on words.</li>
 <li>Plugs directly into an <code>analogRead()</code> port</li>
-</ul><h2>Documentation</h2>
+</ul><h2>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h2>
 
 <p>Head over to the <a href="https://github.com/arjo129/uSpeech/wiki">wiki</a> and you will find most of the documentation required.</p>
 
-<h2>Algorithm</h2>
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>The library utilizes a special algorythm to enable speech detection. First the complexity of the signal is determined by taking
+<p>See <a href="https://github.com/arjo129/uSpeech/wiki/Installation">installation section</a> of the wiki.</p>
+
+<h2>
+<a name="algorithm" class="anchor" href="#algorithm"><span class="octicon octicon-link"></span></a>Algorithm</h2>
+
+<p>The library utilizes a special algorithm to enable speech detection. First the complexity of the signal is determined by taking
 the absolute derivative of the signal multiplying it by a fixed point saclar and then dividing it by the absolute integral of the signal.
 Consonants (other than R,L,N and M) have a value above 40 and vowels have a value below 40. Consonants, they can be divided into frictaves and plosives. Plosives are like p or b whereas frictaves are like
 s or z. Generally each band of the complexity coeficient (abs derivative over abs integral) can be matched to a small set of frictaves
@@ -64,7 +73,29 @@ Finally the most appropriate character is chosen.</p>
 
 <ul>
 <li><a href="http://arjo129.github.com">Return to main page</a></li>
-</ul>
+</ul><h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Documentation in other languages are welcome. I will be translating to spanish and chinese (simplified) but the more the merrier. Have a look at the following sections before doing anything:</p>
+
+<ul>
+<li><a href="https://github.com/arjo129/uSpeech/wiki/API-reference">API reference</a></li>
+<li><a href="https://github.com/arjo129/uSpeech/wiki/Porting">Porting</a></li>
+<li>
+<a href="https://github.com/arjo129/uSpeech/wiki/How-%C2%B5Speech-Detects-Phonemes">How it works</a> </li>
+<li><a href="https://github.com/arjo129/uSpeech/wiki/Trouble-shooting">Trouble Shooting</a></li>
+</ul><p>To get started hacking on this project you should make all changes to the 3.0-workingBranch branch. If you look at the file uspeech.h
+there are a number of todos listed. Just fork the branch complete a todo and file a pull request.</p>
+
+<h2>
+<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h2>
+
+<p>There is one test: <a href="https://github.com/arjo129/uSpeech/wiki/Voice-controlled-LED">The LED Test</a></p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>See License.txt</p>
       </section>
     </div>
 

@@ -9,7 +9,6 @@ The library is quite intensive on the processor. Each sample collection takes ab
  - Letter based recognition
  - Small memory footprint
  - Arduino Compatible
- - No training required
  - Fixed point arithmetic (not anymore)
  - 30% - 40% accuracy if based on phonemes, up to 80% if based on words.
  - Plugs directly into an ``analogRead()`` port

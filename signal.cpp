@@ -110,7 +110,7 @@ void signal::zeroCrossingSearch(){
 		prev = arr[i]-avgPower;
 		if(prev<0){
 			lower = i;
-			i = 33; //Break out of loop
+			i = 0; //Break out of loop
 		}
 		i--;
 	}

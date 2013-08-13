@@ -4,9 +4,12 @@
 */
 char signal::getPhoneme(){
 	sample();
-	if(power()>SILENCE){
+    unsigned int pp =power();
+	if(pp>SILENCE){
+        
 		//Low pass filter for noise removal
-		int k = complexity(power()); 
+		int k = complexity(pp);
+        
 		overview[6] = overview[5];
 		overview[5] = overview[4];
 		overview[4] = overview[3];
@@ -26,13 +29,12 @@ char signal::getPhoneme(){
 #if F_DETECTION > 0
         micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
         //Serial.println(micPower)//If you are having trouble with fs
-        
         if (micPower > F_CONSTANT/*Use the header file to change this*/) {
             return 'f';
         }
 #endif
         zeroCrossingSearch();
-	//Twiddle with the numbers here if your getting false triggers
+    //Twiddle with the numbers here if your getting false triggers
 	//This is the main recognizer part
 	//Todo: use move values to header file
 		if(coeff<30 && coeff>20){

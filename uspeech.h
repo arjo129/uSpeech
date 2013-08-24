@@ -1,5 +1,5 @@
 /*
- uspeech v.1.9.3 (2.0betaRC2)
+ uspeech v.3.0Alpha
  2012 Arjo Chakravarty
  
  uspeech is a library that allows sounds to be classified into certain phonemes
@@ -11,12 +11,14 @@
 
 #include "Arduino.h"
 #include <math.h>
-#define SILENCE 92
+#define SILENCE 1500
 #define F_DETECTION 3
+#define F_CONSTANT 380
 class signal{
 public:
-	int arr[32];
+	int arr[32],avgPower;
 	int calib;
+    int testCoeff;
 	signal(int port);
     int micPower;
 	void sample();
@@ -26,19 +28,18 @@ public:
 	unsigned long fpowerex(int sum, int xtra); //Todo: Remove
 	int snr(int power);
 	void calibrate();
-	unsigned long filters[18], formants[3], intoned; //Todo: Remove
 	unsigned int overview[7];
-	char getPhoneme(); 
-	void debugPrintFilter(); //Todo: Remove
-	void voiceFormants(); //Todo: Remove
-	//void lowPass(int freq); Todo: Implement moving average low pass filter.
+	char getPhoneme(); //void lowPass(int freq); Todo: Implement moving average low pass filter.
     int goertzel(int freq);
-    
+    int vowelRatio;
+    void zeroCrossingSearch();
 private:
 	int pin;
 	int mil;
+    int maxPos;
 	bool silence;
 	void formantAnal(); //Todo: Remove
+    
 };
 
 

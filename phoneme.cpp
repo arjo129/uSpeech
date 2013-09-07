@@ -4,9 +4,12 @@
 */
 char signal::getPhoneme(){
 	sample();
-	if(power()>SILENCE){
+    unsigned int pp =power();
+	if(pp>SILENCE){
+        
 		//Low pass filter for noise removal
-		int k = complexity(power()); 
+		int k = complexity(pp);
+        
 		overview[6] = overview[5];
 		overview[5] = overview[4];
 		overview[4] = overview[3];
@@ -21,17 +24,19 @@ char signal::getPhoneme(){
 			f++;
 		}
 		coeff /= 7;
+        testCoeff = coeff;
 		//Serial.println(coeff); //Use this for debugging
 #if F_DETECTION > 0
         micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
         //Serial.println(micPower)//If you are having trouble with fs
-        
-        if (micPower > 37/*Replace this value (37) with your own*/) {
+        if (micPower > F_CONSTANT/*Use the header file to change this*/) {
             return 'f';
         }
 #endif
-	//Twiddle with the numbers here if your getting false triggers
+        zeroCrossingSearch();
+    //Twiddle with the numbers here if your getting false triggers
 	//This is the main recognizer part
+	//Todo: use move values to header file
 		if(coeff<30 && coeff>20){
 			return 'u';
 		}
@@ -65,18 +70,8 @@ char signal::getPhoneme(){
 		}
 	}
 	else{
+        micPower = 0;
 		return ' ';
 	}
 }
-void signal::formantAnal(){
-	int i = 0;
-	int k = 0;
-	while(i<18){
-		if((long)(filters[i]-filters[i-1]) > 0 & (long)(filters[i]-filters[i+1]) < 0){
-			if(k < 3){
-				formants[k] = i;
-			}
-		}
-		i++;
-	}
-}
+

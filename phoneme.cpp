@@ -26,7 +26,7 @@ char signal::getPhoneme(){
         micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
         //Serial.println(micPower)//If you are having trouble with fs
         
-        if (micPower > 37/*Replace this value (37) with your own*/) {
+        if (micPower > F_CONSTANT) {
             return 'f';
         }
 #endif

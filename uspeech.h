@@ -1,5 +1,6 @@
 /*
  uspeech v.3.0Alpha
+ uspeech v.4.0.1Alpha
  2012 Arjo Chakravarty
  
  uspeech is a library that allows sounds to be classified into certain phonemes

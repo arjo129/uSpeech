@@ -18,7 +18,6 @@
 class signal{
 public:
 	int arr[32],avgPower;
-	int calib;
     int testCoeff;
     int minVolume;  /*!< This is the highest audio power that should be considered ready */
     int fconstant;  /*!< This is the threshold for /f/, configure it yourself */
@@ -46,6 +45,7 @@ private:
 	int mil;
     int maxPos;
 	bool silence;
+    int calib;
 	void formantAnal(); //Todo: Remove
     
 };

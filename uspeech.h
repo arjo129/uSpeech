@@ -9,7 +9,11 @@
 #ifndef uspeech_h
 #define uspeech_h
 
-#include "Arduino.h"
+#define ARDUINO_ENVIRONMENT 1
+#ifdef ARDUINO_ENVIRONMENT > 0
+    #include "Arduino.h"
+#endif
+
 #include <math.h>
 #define SILENCE 2000
 #define F_DETECTION 3

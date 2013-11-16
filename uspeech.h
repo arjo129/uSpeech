@@ -18,6 +18,7 @@
 #define SILENCE 2000
 #define F_DETECTION 3
 #define F_CONSTANT 350
+
 class signal{
 public:
 	int arr[32],avgPower;
@@ -28,7 +29,7 @@ public:
     int aconstant;  /*!< This is the threshold for /a/ /o/ /r/ /l/, configure it yourself */
     int vconstant;  /*!< This is the threshold for /z/ /v/ /w/, configure it yourself */
     int shconstant; /*!< This is the threshold for /sh/ /ch/, above this everything else is regarded as /s/ */
-    BOOL f_enabled; /*!< Set this to false if you do not want to detect /f/s */
+    bool f_enabled; /*!< Set this to false if you do not want to detect /f/s */
 	int amplificationFactor; /*!<Amplification factor: Adjust as you need*/
     signal(int port);
     int micPower;
@@ -43,6 +44,9 @@ public:
 	char getPhoneme(); //void lowPass(int freq); Todo: Implement moving average low pass filter.
     int goertzel(int freq);
     int vowelRatio;
+	char getPhoneme();
+    int goertzel(int freq); //remove
+    int vowelRatio; //remove
     void zeroCrossingSearch();
 private:
 	int pin;
@@ -55,5 +59,16 @@ private:
 };
 
 
+class syllable{
+public:
+    int f,e,o,s,h,v;
+    syllable();
+    int distance(syllable syl);
+    void classify(char c);
+    #ifdef ARDUINO_ENVIRONMENT > 0
+    void debugPrint();
+    #endif
+    
+};
 
 #endif

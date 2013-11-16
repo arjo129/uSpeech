@@ -41,9 +41,6 @@ public:
 	int snr(int power);
 	void calibrate();
 	unsigned int overview[7];
-	char getPhoneme(); //void lowPass(int freq); Todo: Implement moving average low pass filter.
-    int goertzel(int freq);
-    int vowelRatio;
 	char getPhoneme();
     int goertzel(int freq); //remove
     int vowelRatio; //remove
@@ -57,7 +54,6 @@ private:
 	void formantAnal(); //Todo: Remove
     
 };
-
 
 class syllable{
 public:

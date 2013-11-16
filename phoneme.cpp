@@ -26,13 +26,13 @@ char signal::getPhoneme(){
 		coeff /= 7;
         testCoeff = coeff;
 		//Serial.println(coeff); //Use this for debugging
-#if F_DETECTION > 0
-        micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
-        //Serial.println(micPower)//If you are having trouble with fs
-        if (micPower > F_CONSTANT/*Use the header file to change this*/) {
-            return 'f';
+        if(f_enabled){
+            micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
+            //Serial.println(micPower)//If you are having trouble with fs
+            if (micPower > fconstant) {
+                return 'f';
+            }
         }
-#endif
         zeroCrossingSearch();
     //Twiddle with the numbers here if your getting false triggers
 	//This is the main recognizer part

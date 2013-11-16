@@ -4,6 +4,12 @@
  */
 signal::signal(int port){
 	int pin = port;
+	pin = port;
+    fconstant = F_CONSTANT;
+    econstant = 2;
+    aconstant = 4;
+    vconstant = 6;
+    shconstant = 10;
 }
 /**
  * Calibration of background based on averaging 
@@ -46,6 +52,8 @@ unsigned int signal::complexity(int power){
 		i++;
 	}
 	return (j*100)/power;
+    //Serial.println(j);
+	return (j*10)/power;
 }
 
 unsigned long signal::fpowerex(int sum, int xtra){

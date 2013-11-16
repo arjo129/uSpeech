@@ -3,7 +3,6 @@
  * Constructor 
  */
 signal::signal(int port){
-	int pin = port;
 	pin = port;
     fconstant = F_CONSTANT;
     econstant = 2;

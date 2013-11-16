@@ -25,7 +25,8 @@ public:
     int vconstant;  /*!< This is the threshold for /z/ /v/ /w/, configure it yourself */
     int shconstant; /*!< This is the threshold for /sh/ /ch/, above this everything else is regarded as /s/ */
     BOOL f_enabled; /*!< Set this to false if you do not want to detect /f/s */
-	signal(int port);
+	int amplificationFactor; /*!<Amplification factor: Adjust as you need*/
+    signal(int port);
     int micPower;
 	void sample();
     unsigned int maxPower();

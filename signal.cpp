@@ -9,6 +9,7 @@ signal::signal(int port){
     aconstant = 4;
     vconstant = 6;
     shconstant = 10;
+    amplificationFactor = 10;
 }
 /**
  * Calibration of background based on averaging 
@@ -50,9 +51,8 @@ unsigned int signal::complexity(int power){
 		j+=abs(arr[i]-arr[i-1]);
 		i++;
 	}
-	return (j*100)/power;
     //Serial.println(j);
-	return (j*10)/power;
+	return (j*amplificationFactor)/power;
 }
 
 unsigned long signal::fpowerex(int sum, int xtra){

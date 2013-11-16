@@ -1,5 +1,4 @@
 /*
- uspeech v.3.0Alpha
  uspeech v.4.0.1Alpha
  2012 Arjo Chakravarty
  
@@ -12,9 +11,9 @@
 
 #include "Arduino.h"
 #include <math.h>
-#define SILENCE 1500
+#define SILENCE 2000
 #define F_DETECTION 3
-#define F_CONSTANT 380
+#define F_CONSTANT 350
 class signal{
 public:
 	int arr[32],avgPower;
@@ -49,6 +48,7 @@ private:
 	void formantAnal(); //Todo: Remove
     
 };
+
 
 
 #endif

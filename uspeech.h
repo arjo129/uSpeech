@@ -44,7 +44,6 @@ public:
 	char getPhoneme();
     int goertzel(int freq); //remove
     int vowelRatio; //remove
-    void zeroCrossingSearch();
 private:
 	int pin;
 	int mil;

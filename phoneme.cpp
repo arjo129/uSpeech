@@ -3,7 +3,9 @@
 * The recognizer function: takes 1-4ms to execute
 */
 char signal::getPhoneme(){
+#ifdef ARDUINO_ENVIRONMENT > 0
 	sample();
+#endif
     unsigned int pp =power();
 	if(pp>SILENCE){
         

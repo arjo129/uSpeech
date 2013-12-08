@@ -3,6 +3,10 @@
 syllable::syllable(){
     f = 0; e = 0; o = 0; s = 0; h = 0; v = 0;
 }
+/***
+ *  Classify a character into f,e,o,s,h; Call during main loop
+ *  @param c    the phoneme
+ */
 void syllable::classify(char c){
     switch (c) {
         case 'f':
@@ -28,7 +32,18 @@ void syllable::classify(char c){
     }
 }
 int syllable::distance(syllable syl){
-    return 0;
+    int dist = 0;
+    //Separate algorithm
+    if(syl.f>5 & f>5){
+        
+    }
+    else{
+        dist+=10;
+    }
+    
+    //dist+= (syl.s + );
+    
+    return dist;
 }
 #ifdef ARDUINO_ENVIRONMENT > 0
 void syllable::debugPrint(){

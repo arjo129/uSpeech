@@ -16,7 +16,7 @@ void loop(){
     Serial.println(" Press 'b' if you wish to calibrate/check the getPhoneme");
     Serial.println(" Press 'c' if you wish to calibrate/check the volume of your microphone");
     Serial.println(" Press 'd' if you wish to calibrate/check the coeff");
-    Serial.println(" Press 'e' if you wish to calibrate/check the vowel detector");   
+    
     option = 1;
   }
   if(option==1){

@@ -3,10 +3,12 @@ signal voice(A0);
 char option = 0;
 void setup(){
   voice.calibrate();
+  voice.f_enabled = true;
   Serial.begin(9600);
 }
 void loop(){
-  voice.sample();
+  //voice.sample();
+  
   char c=voice.getPhoneme();
   if(option==0){
     Serial.println("uSpeech debug tool--------");
@@ -14,7 +16,7 @@ void loop(){
     Serial.println(" Press 'b' if you wish to calibrate/check the getPhoneme");
     Serial.println(" Press 'c' if you wish to calibrate/check the volume of your microphone");
     Serial.println(" Press 'd' if you wish to calibrate/check the coeff");
-    Serial.println(" Press 'e' if you wish to calibrate/check the vowel detector");   
+    
     option = 1;
   }
   if(option==1){
@@ -35,8 +37,5 @@ void loop(){
   if(option=='d'){
   	Serial.println(voice.testCoeff);
   }
-  if(option=='e'){
-    
-    Serial.println(voice.vowelRatio);
-  }
+  
 }

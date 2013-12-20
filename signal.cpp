@@ -3,13 +3,21 @@
  * Constructor 
  */
 signal::signal(int port){
-	int pin = port;
+	pin = port;
+    fconstant = F_CONSTANT;
+    econstant = 2;
+    aconstant = 4;
+    vconstant = 6;
+    shconstant = 10;
+    amplificationFactor = 10;
 }
 /**
  * Calibration of background based on averaging 
  */
 void signal::calibrate(){
+    #ifdef ARDUINO_ENVIRONMENT > 0
 	calib = (analogRead(pin)+analogRead(pin)+analogRead(pin)+analogRead(pin))/4; //acquire background noise
+    #endif
 }
 /**
  * Sampling of the sound: Based on storing values minus average background noise
@@ -17,7 +25,9 @@ void signal::calibrate(){
 void signal::sample(){
 	int i = 0;
 	while ( i < 32){
-		arr[i] = analogRead(pin)-calib;	
+        #ifdef ARDUINO_ENVIRONMENT > 0
+		arr[i] = analogRead(pin)-calib;
+        #endif
 		i++;
 	}
 	
@@ -45,27 +55,11 @@ unsigned int signal::complexity(int power){
 		j+=abs(arr[i]-arr[i-1]);
 		i++;
 	}
-	return (j*100)/power;
+    //Serial.println(j);
+	return (j*amplificationFactor)/power;
 }
 
-unsigned long signal::fpowerex(int sum, int xtra){
-	
-	int i = sum;
-	unsigned long j = abs(arr[i-1]*(xtra/10));
-	int p;
-	while(i<32){
-		int k = 0;
-		p = 0;
-		while(k<sum){
-			p+=abs(arr[i-k]);
-			k++;
-		}
-		j+=p/sum+p/(xtra/10);
-		i++;
-		//Serial.println(j);
-	}
-	return j;
-}
+
 /**
 * Point of maximum amplitude
 */
@@ -91,28 +85,4 @@ int signal::snr(int power){
 		i++;
 	}
 	return sqrt(j/mean)/power;
-}
-void signal::zeroCrossingSearch(){
-	int i=maxPos;
-	int prev = arr[i];
-	int upper = 0;
-	int lower = 0;
-	while (i<32){
-		prev = arr[i]-avgPower;
-		if(prev<0){
-			upper = i;
-			i = 33; //Break out of loop
-		}
-		i++;
-	}
-	i=maxPos;
-	while (i>0){
-		prev = arr[i]-avgPower;
-		if(prev<0){
-			lower = i;
-			i = 0; //Break out of loop
-		}
-		i--;
-	}
-	vowelRatio = (upper-i)*100/lower-i;
 }

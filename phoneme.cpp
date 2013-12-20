@@ -1,15 +1,17 @@
 #include "uspeech.h"
 /**
-* The recognizer function
+* The recognizer function: takes 1-4ms to execute
 */
 char signal::getPhoneme(){
+#ifdef ARDUINO_ENVIRONMENT > 0
 	sample();
+#endif
     unsigned int pp =power();
 	if(pp>SILENCE){
         
-		//Low pass filter for noise removal
+		//Perform Division
 		int k = complexity(pp);
-        
+        //Low pass filter for noise removal
 		overview[6] = overview[5];
 		overview[5] = overview[4];
 		overview[4] = overview[3];
@@ -26,51 +28,47 @@ char signal::getPhoneme(){
 		coeff /= 7;
         testCoeff = coeff;
 		//Serial.println(coeff); //Use this for debugging
-#if F_DETECTION > 0
-        micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
-        //Serial.println(micPower)//If you are having trouble with fs
-        if (micPower > F_CONSTANT/*Use the header file to change this*/) {
-            return 'f';
+        if(f_enabled){
+            micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
+            //Serial.println(micPower)//If you are having trouble with fs
+            if (micPower > fconstant) {
+                return 'f';
+            }
         }
-#endif
-        zeroCrossingSearch();
-    //Twiddle with the numbers here if your getting false triggers
-	//This is the main recognizer part
-	//Todo: use move values to header file
-		if(coeff<30 && coeff>20){
-			return 'u';
-		}
-		else {
-			if(coeff<33){
+
+	//Twiddle with the numbers here if your getting false triggers
+	//This is the main classifier part
+	
+        if(coeff<econstant /*Default value = 2*/){
 				return 'e';
 			}
 			else{
-				if(coeff<46){
+				if(coeff<aconstant /*Default value = 4*/){
 					return 'o';
 				}
 				else{
-					if(coeff<60){
+					if(coeff<vconstant /*Default value = 6*/){
 						return 'v';
 					}
 					else{
-						if(coeff<80){
+						if(coeff<shconstant /*Default value = 10*/){
 							return 'h';
 						}
 						else{
-							if(coeff>80){
+							if(coeff>shconstant){
 								return 's';
 							}
-							else{
-								return 'm';
-							}
+							
 						}
 					}
 				}
 			}
-		}
+		
 	}
 	else{
         micPower = 0;
+       
+        testCoeff = 0;
 		return ' ';
 	}
 }

@@ -14,13 +14,12 @@ getPhoneme	KEYWORD2
 snr		KEYWORD2
 sample		KEYWORD2
 calibrate	KEYWORD2
-power	       KEYWORD2
 #######################################
 # Instances (KEYWORD2)
 #######################################
 
 signal 		KEYWORD2
-
+syllable	KEYWORD1
 #######################################
 # Constants (LITERAL1)
 #######################################

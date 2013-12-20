@@ -35,17 +35,18 @@ void syllable::classify(char c){
 
 #if ARDUINO_ENVIRONMENT > 0
 void syllable::debugPrint(){
-    Serial.print("\nF: ");
+    Serial.print("[ ");
     Serial.print(f);
-    Serial.print("\nE: ");
+    Serial.print(", ");
     Serial.print(e);
-    Serial.print("\nO: ");
+    Serial.print(", ");
     Serial.print(o);
-    Serial.print("\nV: ");
+    Serial.print(", ");
     Serial.print(v);
-    Serial.print("\nH: ");
+    Serial.print(", ");
     Serial.print(h);
-    Serial.print("\nS: ");
+    Serial.print(", ");
     Serial.print(s);
+    Serial.print("]");
 }
 #endif

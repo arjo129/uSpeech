@@ -10,18 +10,20 @@
 #define uspeech_h
 
 #define ARDUINO_ENVIRONMENT 1
-#ifdef ARDUINO_ENVIRONMENT > 0
+#if ARDUINO_ENVIRONMENT > 0
     #include "Arduino.h"
 #endif
 
 #include <math.h>
+#include <stdlib.h>
 #define SILENCE 2000
 #define F_DETECTION 3
 #define F_CONSTANT 350
 
 class signal{
 public:
-	int arr[32],avgPower;
+	int arr[32];  /*!< This is the audio buffer*/
+    int avgPower;
     int testCoeff;
     int minVolume;  /*!< This is the highest audio power that should be considered ready */
     int fconstant;  /*!< This is the threshold for /f/, configure it yourself */
@@ -37,20 +39,19 @@ public:
     unsigned int maxPower();
 	unsigned int power();
 	unsigned int complexity(int power);
-	unsigned long fpowerex(int sum, int xtra); //Todo: Remove
 	int snr(int power);
 	void calibrate();
-	unsigned int overview[7];
+	
 	char getPhoneme();
     int goertzel(int freq); //remove
-    int vowelRatio; //remove
+    
 private:
 	int pin;
 	int mil;
     int maxPos;
 	bool silence;
     int calib;
-	void formantAnal(); //Todo: Remove
+    unsigned int overview[7];
     
 };
 
@@ -58,9 +59,8 @@ class syllable{
 public:
     int f,e,o,s,h,v;
     syllable();
-    int distance(syllable syl);
     void classify(char c);
-    #ifdef ARDUINO_ENVIRONMENT > 0
+    #if ARDUINO_ENVIRONMENT > 0
     void debugPrint();
     #endif
     

@@ -31,21 +31,9 @@ void syllable::classify(char c){
             break;
     }
 }
-int syllable::distance(syllable syl){
-    int dist = 0;
-    //Separate algorithm
-    if(syl.f>5 & f>5){
-        
-    }
-    else{
-        dist+=10;
-    }
-    
-    //dist+= (syl.s + );
-    
-    return dist;
-}
-#ifdef ARDUINO_ENVIRONMENT > 0
+
+
+#if ARDUINO_ENVIRONMENT > 0
 void syllable::debugPrint(){
     Serial.print("\nF: ");
     Serial.print(f);

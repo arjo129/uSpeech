@@ -59,24 +59,7 @@ unsigned int signal::complexity(int power){
 	return (j*amplificationFactor)/power;
 }
 
-unsigned long signal::fpowerex(int sum, int xtra){
-	
-	int i = sum;
-	unsigned long j = abs(arr[i-1]*(xtra/10));
-	int p;
-	while(i<32){
-		int k = 0;
-		p = 0;
-		while(k<sum){
-			p+=abs(arr[i-k]);
-			k++;
-		}
-		j+=p/sum+p/(xtra/10);
-		i++;
-		//Serial.println(j);
-	}
-	return j;
-}
+
 /**
 * Point of maximum amplitude
 */

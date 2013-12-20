@@ -67,7 +67,7 @@ char signal::getPhoneme(){
 	}
 	else{
         micPower = 0;
-        vowelRatio = 0;
+       
         testCoeff = 0;
 		return ' ';
 	}

@@ -60,6 +60,7 @@ public:
     int f,e,o,s,h,v;
     syllable();
     void classify(char c);
+    int* tointptr();
     #if ARDUINO_ENVIRONMENT > 0
     void debugPrint();
     #endif

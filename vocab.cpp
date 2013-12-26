@@ -48,5 +48,17 @@ void syllable::debugPrint(){
     Serial.print(", ");
     Serial.print(s);
     Serial.print("]");
+   
 }
 #endif
+
+int* syllable::tointptr(){
+    static int matrix[6];
+    matrix[0] = f;
+    matrix[1] = e;
+    matrix[2] = o;
+    matrix[3] = v;
+    matrix[4] = h;
+    matrix[5] = s;
+    return matrix;
+}

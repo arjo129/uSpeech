@@ -7,6 +7,13 @@ char prev;
 boolean newline=false;
 int sum = 0;
 void setup(){
+  voice.f_enabled = true;
+  voice.minVolume = 1500;
+  voice.fconstant = 400;
+  voice.econstant = 1;
+  voice.aconstant = 2;
+  voice.vconstant = 3;
+  voice.shconstant = 4;
   voice.calibrate();
   Serial.begin(9600);
   pinMode(led, OUTPUT); 

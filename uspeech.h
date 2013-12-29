@@ -23,13 +23,13 @@
 class signal{
 public:
 	int arr[32];  /*!< This is the audio buffer*/
-    int avgPower;
-    int testCoeff;
-    int minVolume;  /*!< This is the highest audio power that should be considered ready */
-    int fconstant;  /*!< This is the threshold for /f/, configure it yourself */
-    int econstant;  /*!< This is the threshold for /ee/, /i/, configure it yourself */
-    int aconstant;  /*!< This is the threshold for /a/ /o/ /r/ /l/, configure it yourself */
-    int vconstant;  /*!< This is the threshold for /z/ /v/ /w/, configure it yourself */
+	int avgPower;
+	int testCoeff;
+	int minVolume;  /*!< This is the highest audio power that should be considered ready */
+	int fconstant;  /*!< This is the threshold for /f/, configure it yourself */
+	int econstant;  /*!< This is the threshold for /ee/, /i/, configure it yourself */
+	int aconstant;  /*!< This is the threshold for /a/ /o/ /r/ /l/, configure it yourself */
+ 	int vconstant;  /*!< This is the threshold for /z/ /v/ /w/, configure it yourself */
     int shconstant; /*!< This is the threshold for /sh/ /ch/, above this everything else is regarded as /s/ */
     bool f_enabled; /*!< Set this to false if you do not want to detect /f/s */
 	int amplificationFactor; /*!<Amplification factor: Adjust as you need*/
@@ -38,22 +38,18 @@ public:
 	void sample();
     unsigned int maxPower();
 	unsigned int power();
-	unsigned int complexity(int power);
 	int snr(int power);
 	void calibrate();
-	
 	char getPhoneme();
-    
-    
 private:
 	int goertzel(int freq); //remove
 	int pin;
 	int mil;
-    int maxPos;
+	int maxPos;
 	bool silence;
-    int calib;
-    unsigned int overview[7];
-    
+	int calib;
+	unsigned int overview[7];
+	unsigned int complexity(int power);
 };
 
 class syllable{

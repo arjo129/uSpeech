@@ -1,5 +1,5 @@
 /*
- uspeech v.4.0.1Alpha
+ uspeech v.4.x.x
  2012 Arjo Chakravarty
  
  uspeech is a library that allows sounds to be classified into certain phonemes
@@ -43,9 +43,10 @@ public:
 	void calibrate();
 	
 	char getPhoneme();
-    int goertzel(int freq); //remove
+    
     
 private:
+	int goertzel(int freq); //remove
 	int pin;
 	int mil;
     int maxPos;

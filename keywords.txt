@@ -19,7 +19,7 @@ calibrate	KEYWORD2
 #######################################
 
 signal 		KEYWORD2
-syllable	KEYWORD1
+syllable	KEYWORD2
 #######################################
 # Constants (LITERAL1)
 #######################################

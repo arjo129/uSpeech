@@ -3,7 +3,6 @@
 #include <uspeech.h>
 
 signal voice(A0);
-int time;
 bool first =  true, process = false;
 syllable s;
 Servo myservo;
@@ -25,6 +24,7 @@ void setup() {
   myservo.attach(9);
   voice.f_enabled = true;
   voice.minVolume = 1500;
+  //Change this to your configuration settings
   voice.fconstant = 400;
   voice.econstant = 1;
   voice.aconstant = 2;
@@ -38,6 +38,7 @@ void loop() {
   char c = voice.getPhoneme();
   
   if(c==' '){
+    //perform word matching when silent
     if(process){
       int sum = s.f+s.o+s.v+s.s+s.h;
       if(sum>30){
@@ -71,12 +72,6 @@ void loop() {
     }
   }
   else{
-    if(first){
-      time = millis();
-    }
-    else{
-      
-    }
     s.classify(c);
     process = true;
   }

@@ -42,7 +42,6 @@ public:
 	void calibrate();
 	char getPhoneme();
 private:
-	int goertzel(int freq); //remove
 	int pin;
 	int mil;
 	int maxPos;

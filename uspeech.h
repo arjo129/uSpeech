@@ -20,6 +20,9 @@
 #define F_DETECTION 3
 #define F_CONSTANT 350
 
+/**
+ *  The main recognizer class
+ */
 class signal{
 public:
 	int arr[32];  /*!< This is the audio buffer*/
@@ -35,7 +38,7 @@ public:
 	int amplificationFactor; /*!<Amplification factor: Adjust as you need*/
 	int micPowerThreshold; /*!< Ignore anything with micPower below this */
 	int scale;
-	char phoneme;	/*!< the phoneme detected when f was returned */
+	char phoneme;	/*!< The phoneme detected when f was returned */
 	signal(int port);
 	int micPower;
 	void sample();
@@ -54,16 +57,18 @@ private:
 	unsigned int complexity(int power);
 };
 
+/**
+ *  Simple Accumulator Vector. Stores simple syllables. Useful for basic word recognition.
+ */
 class syllable{
 public:
-    int f,e,o,s,h,v;
-    syllable();
-    void classify(char c);
-    int* tointptr();
-    #if ARDUINO_ENVIRONMENT > 0
-    void debugPrint();
+    int f,e,o,s,h,v; /*!< Accumulators for the stated characters */
+    syllable(); /*!< Constructor for the class*/
+    void classify(char c); /*!< Classifies the character into a vector so as to create a fingerprint for the uttered syllable*/
+    int* tointptr(); /*!< Returns the vector from the accumulators as an integer pointer */
+    #if ARDUINO_ENVIRONMENT > 0 
+    void debugPrint(); /*!< Outputs the datain the accumulator vector. Only enabled for arduino.*/
     #endif
-    
 };
 
 #endif

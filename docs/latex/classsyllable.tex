@@ -1,17 +1,20 @@
 \hypertarget{classsyllable}{\section{syllable Class Reference}
 \label{classsyllable}\index{syllable@{syllable}}
 }
+
+
+{\ttfamily \#include $<$uspeech.\-h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classsyllable_ac96f3746c2809f61641bbd84d8a54d6c}{void {\bfseries classify} (char c)}\label{classsyllable_ac96f3746c2809f61641bbd84d8a54d6c}
-
+\hyperlink{classsyllable_a291affba67abd6153d1f915708f69fea}{syllable} ()
 \item 
-\hypertarget{classsyllable_a0098736a4e24ef25f99f5931f557f9be}{int $\ast$ {\bfseries tointptr} ()}\label{classsyllable_a0098736a4e24ef25f99f5931f557f9be}
-
+void \hyperlink{classsyllable_ac96f3746c2809f61641bbd84d8a54d6c}{classify} (char c)
 \item 
-\hypertarget{classsyllable_a541d6d839787682f075fee01a498b511}{void {\bfseries debug\-Print} ()}\label{classsyllable_a541d6d839787682f075fee01a498b511}
-
+int $\ast$ \hyperlink{classsyllable_a0098736a4e24ef25f99f5931f557f9be}{tointptr} ()
+\item 
+void \hyperlink{classsyllable_a541d6d839787682f075fee01a498b511}{debug\-Print} ()
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -31,19 +34,78 @@
 \hypertarget{classsyllable_a2b09344ec090d843ffea4f9ab766d904}{int {\bfseries h}}\label{classsyllable_a2b09344ec090d843ffea4f9ab766d904}
 
 \item 
-\hypertarget{classsyllable_a4cec2f8c6bee7e16ec7071ed630f0c33}{int {\bfseries v}}\label{classsyllable_a4cec2f8c6bee7e16ec7071ed630f0c33}
-
+int \hyperlink{classsyllable_a4cec2f8c6bee7e16ec7071ed630f0c33}{v}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
+Simple Accumulator Vector. Stores simple syllables. Useful for basic word recognition. 
+
+Definition at line 63 of file uspeech.\-h.
 
 
-Definition at line 58 of file uspeech.\-h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classsyllable_a291affba67abd6153d1f915708f69fea}{\index{syllable@{syllable}!syllable@{syllable}}
+\index{syllable@{syllable}!syllable@{syllable}}
+\subsubsection[{syllable}]{\setlength{\rightskip}{0pt plus 5cm}syllable\-::syllable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classsyllable_a291affba67abd6153d1f915708f69fea}
+Constructor for the class 
+
+Definition at line 3 of file vocab.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classsyllable_ac96f3746c2809f61641bbd84d8a54d6c}{\index{syllable@{syllable}!classify@{classify}}
+\index{classify@{classify}!syllable@{syllable}}
+\subsubsection[{classify}]{\setlength{\rightskip}{0pt plus 5cm}void syllable\-::classify (
+\begin{DoxyParamCaption}
+\item[{char}]{c}
+\end{DoxyParamCaption}
+)}}\label{classsyllable_ac96f3746c2809f61641bbd84d8a54d6c}
+Classifies the character into a vector so as to create a fingerprint for the uttered syllable 
+
+Definition at line 10 of file vocab.\-cpp.
+
+\hypertarget{classsyllable_a541d6d839787682f075fee01a498b511}{\index{syllable@{syllable}!debug\-Print@{debug\-Print}}
+\index{debug\-Print@{debug\-Print}!syllable@{syllable}}
+\subsubsection[{debug\-Print}]{\setlength{\rightskip}{0pt plus 5cm}void syllable\-::debug\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classsyllable_a541d6d839787682f075fee01a498b511}
+Outputs the datain the accumulator vector. Only enabled for arduino. 
+
+Definition at line 37 of file vocab.\-cpp.
+
+\hypertarget{classsyllable_a0098736a4e24ef25f99f5931f557f9be}{\index{syllable@{syllable}!tointptr@{tointptr}}
+\index{tointptr@{tointptr}!syllable@{syllable}}
+\subsubsection[{tointptr}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ syllable\-::tointptr (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classsyllable_a0098736a4e24ef25f99f5931f557f9be}
+Returns the vector from the accumulators as an integer pointer 
+
+Definition at line 55 of file vocab.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classsyllable_a4cec2f8c6bee7e16ec7071ed630f0c33}{\index{syllable@{syllable}!v@{v}}
+\index{v@{v}!syllable@{syllable}}
+\subsubsection[{v}]{\setlength{\rightskip}{0pt plus 5cm}int syllable\-::v}}\label{classsyllable_a4cec2f8c6bee7e16ec7071ed630f0c33}
+Accumulators for the stated characters 
+
+Definition at line 65 of file uspeech.\-h.
 
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-uspeech.\-h\item 
-vocab.\-cpp\end{DoxyCompactItemize}
+Arduino/libraries/u\-Speech/u\-Speech/uspeech.\-h\item 
+Arduino/libraries/u\-Speech/u\-Speech/vocab.\-cpp\end{DoxyCompactItemize}

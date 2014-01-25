@@ -1,0 +1,170 @@
+.TH "signal" 3 "Sat Jan 25 2014" "Version 4.1.2" "µSpeech" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+signal \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <uspeech\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBsignal\fP (int port)"
+.br
+.ti -1c
+.RI "void \fBsample\fP ()"
+.br
+.ti -1c
+.RI "unsigned int \fBmaxPower\fP ()"
+.br
+.ti -1c
+.RI "unsigned int \fBpower\fP ()"
+.br
+.ti -1c
+.RI "int \fBsnr\fP (int \fBpower\fP)"
+.br
+.ti -1c
+.RI "void \fBcalibrate\fP ()"
+.br
+.ti -1c
+.RI "char \fBgetPhoneme\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBarr\fP [32]"
+.br
+.ti -1c
+.RI "int \fBavgPower\fP"
+.br
+.ti -1c
+.RI "int \fBtestCoeff\fP"
+.br
+.ti -1c
+.RI "int \fBminVolume\fP"
+.br
+.ti -1c
+.RI "int \fBfconstant\fP"
+.br
+.ti -1c
+.RI "int \fBeconstant\fP"
+.br
+.ti -1c
+.RI "int \fBaconstant\fP"
+.br
+.ti -1c
+.RI "int \fBvconstant\fP"
+.br
+.ti -1c
+.RI "int \fBshconstant\fP"
+.br
+.ti -1c
+.RI "bool \fBf_enabled\fP"
+.br
+.ti -1c
+.RI "int \fBamplificationFactor\fP"
+.br
+.ti -1c
+.RI "int \fBmicPowerThreshold\fP"
+.br
+.ti -1c
+.RI "int \fBscale\fP"
+.br
+.ti -1c
+.RI "char \fBphoneme\fP"
+.br
+.ti -1c
+.RI "int \fBmicPower\fP"
+.br
+.ti -1c
+.RI "int \fBcalib\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The main recognizer class 
+.PP
+Definition at line 26 of file uspeech\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "signal::signal (intport)"
+Constructor 
+.PP
+Definition at line 7 of file signal\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void signal::calibrate ()"
+Calibration of background based on averaging 
+.PP
+Definition at line 21 of file signal\&.cpp\&.
+.SS "char signal::getPhoneme ()"
+The recognizer function: takes 1-4ms to execute 
+.PP
+Definition at line 5 of file phoneme\&.cpp\&.
+.SS "unsigned int signal::maxPower ()"
+Point of maximum amplitude 
+.PP
+Definition at line 75 of file signal\&.cpp\&.
+.SS "unsigned int signal::power ()"
+An estimate of background noise 
+.PP
+Definition at line 48 of file signal\&.cpp\&.
+.SS "void signal::sample ()"
+Sampling of the sound: Based on storing values minus average background noise 
+.PP
+Definition at line 35 of file signal\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int signal::aconstant"
+This is the threshold for /a/ /o/ /r/ /l/, configure it yourself 
+.PP
+Definition at line 34 of file uspeech\&.h\&.
+.SS "int signal::amplificationFactor"
+Amplification factor: Adjust as you need 
+.PP
+Definition at line 38 of file uspeech\&.h\&.
+.SS "int signal::arr[32]"
+This is the audio buffer 
+.PP
+Definition at line 28 of file uspeech\&.h\&.
+.SS "int signal::econstant"
+This is the threshold for /ee/, /i/, configure it yourself 
+.PP
+Definition at line 33 of file uspeech\&.h\&.
+.SS "bool signal::f_enabled"
+Set this to false if you do not want to detect /f/s 
+.PP
+Definition at line 37 of file uspeech\&.h\&.
+.SS "int signal::fconstant"
+This is the threshold for /f/, configure it yourself 
+.PP
+Definition at line 32 of file uspeech\&.h\&.
+.SS "int signal::micPowerThreshold"
+Ignore anything with micPower below this 
+.PP
+Definition at line 39 of file uspeech\&.h\&.
+.SS "int signal::minVolume"
+This is the highest audio power that should be considered ready 
+.PP
+Definition at line 31 of file uspeech\&.h\&.
+.SS "char signal::phoneme"
+The phoneme detected when f was returned 
+.PP
+Definition at line 41 of file uspeech\&.h\&.
+.SS "int signal::shconstant"
+This is the threshold for /sh/ /ch/, above this everything else is regarded as /s/ 
+.PP
+Definition at line 36 of file uspeech\&.h\&.
+.SS "int signal::vconstant"
+This is the threshold for /z/ /v/ /w/, configure it yourself 
+.PP
+Definition at line 35 of file uspeech\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for µSpeech from the source code\&.

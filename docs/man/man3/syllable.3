@@ -1,0 +1,83 @@
+.TH "syllable" 3 "Sat Jan 25 2014" "Version 4.1.2" "µSpeech" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+syllable \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <uspeech\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBsyllable\fP ()"
+.br
+.ti -1c
+.RI "void \fBclassify\fP (char c)"
+.br
+.ti -1c
+.RI "int * \fBtointptr\fP ()"
+.br
+.ti -1c
+.RI "void \fBdebugPrint\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBf\fP"
+.br
+.ti -1c
+.RI "int \fBe\fP"
+.br
+.ti -1c
+.RI "int \fBo\fP"
+.br
+.ti -1c
+.RI "int \fBs\fP"
+.br
+.ti -1c
+.RI "int \fBh\fP"
+.br
+.ti -1c
+.RI "int \fBv\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Simple Accumulator Vector\&. Stores simple syllables\&. Useful for basic word recognition\&. 
+.PP
+Definition at line 63 of file uspeech\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "syllable::syllable ()"
+Constructor for the class 
+.PP
+Definition at line 3 of file vocab\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void syllable::classify (charc)"
+Classifies the character into a vector so as to create a fingerprint for the uttered syllable 
+.PP
+Definition at line 10 of file vocab\&.cpp\&.
+.SS "void syllable::debugPrint ()"
+Outputs the datain the accumulator vector\&. Only enabled for arduino\&. 
+.PP
+Definition at line 37 of file vocab\&.cpp\&.
+.SS "int * syllable::tointptr ()"
+Returns the vector from the accumulators as an integer pointer 
+.PP
+Definition at line 55 of file vocab\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int syllable::v"
+Accumulators for the stated characters 
+.PP
+Definition at line 65 of file uspeech\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for µSpeech from the source code\&.

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.5"/>
-<title>µSpeech: vocab.cpp Source File</title>
+<title>µSpeech: Arduino/libraries/uSpeech/uSpeech/vocab.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">µSpeech
-   &#160;<span id="projectnumber">4.1.1</span>
+   &#160;<span id="projectnumber">4.1.2</span>
    </div>
    <div id="projectbrief">Speech recognition library</div>
   </td>
@@ -65,7 +65,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="files.html"><span>File&#160;List</span></a></li>
     </ul>
   </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -80,6 +79,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_a991eec27578c865874ede3d8ec657c2.html">Arduino</a></li><li class="navelem"><a class="el" href="dir_481cc946b8a81b8d9363a4aad6201160.html">libraries</a></li><li class="navelem"><a class="el" href="dir_7078b0c71f13430410229428d937756d.html">uSpeech</a></li><li class="navelem"><a class="el" href="dir_ae19a192ba29b03414c16007b21660e1.html">uSpeech</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">vocab.cpp</div>  </div>
@@ -87,14 +91,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;uspeech.h&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;syllable::syllable(){</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    f = 0; e = 0; o = 0; s = 0; h = 0; v = 0;</div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="classsyllable.html#a291affba67abd6153d1f915708f69fea">    3</a></span>&#160;<a class="code" href="classsyllable.html#a291affba67abd6153d1f915708f69fea">syllable::syllable</a>(){</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    f = 0; e = 0; o = 0; s = 0; h = 0; <a class="code" href="classsyllable.html#a4cec2f8c6bee7e16ec7071ed630f0c33">v</a> = 0;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;}</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">/***</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *  Classify a character into f,e,o,s,h; Call during main loop</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *  @param c    the phoneme</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> syllable::classify(<span class="keywordtype">char</span> c){</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classsyllable.html#ac96f3746c2809f61641bbd84d8a54d6c">   10</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classsyllable.html#ac96f3746c2809f61641bbd84d8a54d6c">syllable::classify</a>(<span class="keywordtype">char</span> c){</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">switch</span> (c) {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;f&#39;</span>:</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            f++;</div>
@@ -106,7 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            o++;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;v&#39;</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            v++;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="classsyllable.html#a4cec2f8c6bee7e16ec7071ed630f0c33">v</a>++;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            h++;</div>
@@ -121,7 +125,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#if ARDUINO_ENVIRONMENT &gt; 0</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="keywordtype">void</span> syllable::debugPrint(){</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classsyllable.html#a541d6d839787682f075fee01a498b511">   37</a></span>&#160;<span class="preprocessor"></span><span class="keywordtype">void</span> <a class="code" href="classsyllable.html#a541d6d839787682f075fee01a498b511">syllable::debugPrint</a>(){</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    Serial.print(<span class="stringliteral">&quot;[ &quot;</span>);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    Serial.print(f);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    Serial.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
@@ -129,7 +133,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    Serial.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    Serial.print(o);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    Serial.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    Serial.print(v);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    Serial.print(<a class="code" href="classsyllable.html#a4cec2f8c6bee7e16ec7071ed630f0c33">v</a>);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    Serial.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    Serial.print(h);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    Serial.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
@@ -139,20 +143,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">int</span>* syllable::tointptr(){</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classsyllable.html#a0098736a4e24ef25f99f5931f557f9be">   55</a></span>&#160;<span class="keywordtype">int</span>* <a class="code" href="classsyllable.html#a0098736a4e24ef25f99f5931f557f9be">syllable::tointptr</a>(){</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> matrix[6];</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    matrix[0] = f;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    matrix[1] = e;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    matrix[2] = o;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    matrix[3] = v;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    matrix[3] = <a class="code" href="classsyllable.html#a4cec2f8c6bee7e16ec7071ed630f0c33">v</a>;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    matrix[4] = h;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    matrix[5] = s;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> matrix;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="ttc" id="classsyllable_html_a541d6d839787682f075fee01a498b511"><div class="ttname"><a href="classsyllable.html#a541d6d839787682f075fee01a498b511">syllable::debugPrint</a></div><div class="ttdeci">void debugPrint()</div><div class="ttdef"><b>Definition:</b> <a href="vocab_8cpp_source.html#l00037">vocab.cpp:37</a></div></div>
+<div class="ttc" id="classsyllable_html_a0098736a4e24ef25f99f5931f557f9be"><div class="ttname"><a href="classsyllable.html#a0098736a4e24ef25f99f5931f557f9be">syllable::tointptr</a></div><div class="ttdeci">int * tointptr()</div><div class="ttdef"><b>Definition:</b> <a href="vocab_8cpp_source.html#l00055">vocab.cpp:55</a></div></div>
+<div class="ttc" id="classsyllable_html_ac96f3746c2809f61641bbd84d8a54d6c"><div class="ttname"><a href="classsyllable.html#ac96f3746c2809f61641bbd84d8a54d6c">syllable::classify</a></div><div class="ttdeci">void classify(char c)</div><div class="ttdef"><b>Definition:</b> <a href="vocab_8cpp_source.html#l00010">vocab.cpp:10</a></div></div>
+<div class="ttc" id="classsyllable_html_a291affba67abd6153d1f915708f69fea"><div class="ttname"><a href="classsyllable.html#a291affba67abd6153d1f915708f69fea">syllable::syllable</a></div><div class="ttdeci">syllable()</div><div class="ttdef"><b>Definition:</b> <a href="vocab_8cpp_source.html#l00003">vocab.cpp:3</a></div></div>
+<div class="ttc" id="classsyllable_html_a4cec2f8c6bee7e16ec7071ed630f0c33"><div class="ttname"><a href="classsyllable.html#a4cec2f8c6bee7e16ec7071ed630f0c33">syllable::v</a></div><div class="ttdeci">int v</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00065">uspeech.h:65</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 27 2013 10:03:56 for µSpeech by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 25 2014 10:03:42 for µSpeech by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

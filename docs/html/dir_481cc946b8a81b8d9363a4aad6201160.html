@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.5"/>
-<title>µSpeech: uSpeech library</title>
+<title>µSpeech: Arduino/libraries Directory Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">µSpeech
-   &#160;<span id="projectnumber">4.1.1</span>
+   &#160;<span id="projectnumber">4.1.2</span>
    </div>
    <div id="projectbrief">Speech recognition library</div>
   </td>
@@ -39,7 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,36 +74,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_a991eec27578c865874ede3d8ec657c2.html">Arduino</a></li><li class="navelem"><a class="el" href="dir_481cc946b8a81b8d9363a4aad6201160.html">libraries</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">uSpeech library </div>  </div>
+<div class="title">libraries Directory Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The uSpeech library provides an interface for voice recognition using the Arduino. It currently produces phonemes, often the library will produce junk phonemes. Please bare with it for the time being. A noise removal function is underway. </p>
-<h2>Minimum Requirements</h2>
-<p>The library is quite intensive on the processor. Each sample collection takes about 3.2 milliseconds so pay close attention to the time. The library has been tested on the Arduino Uno (ATMega32). Each signal object uses up 160bytes. No real time scheduler should be used with this.</p>
-<h2>Features</h2>
-<ul>
-<li>Letter based recognition</li>
-<li>Small memory footprint</li>
-<li>Arduino Compatible</li>
-<li>No training required</li>
-<li>Fixed point arithmetic (not anymore)</li>
-<li>30% - 40% accuracy if based on phonemes, up to 80% if based on words.</li>
-<li>Plugs directly into an <code>analogRead()</code> port</li>
-</ul>
-<h2>Documentation</h2>
-<p>Head over to the <a href="https://github.com/arjo129/uSpeech/wiki">wiki</a> and you will find most of the documentation required.</p>
-<h2>Algorithm</h2>
-<p>The library utilizes a special algorithm to enable speech detection. First the complexity of the signal is determined by taking the absolute derivative of the signal multiplying it by a fixed point saclar and then dividing it by the absolute integral of the signal. Consonants (other than R,L,N and M) have a value above 40 and vowels have a value below 40. Consonants, they can be divided into frictaves and plosives. Plosives are like p or b whereas frictaves are like s or z. Generally each band of the complexity coeficient (abs derivative over abs integral) can be matched to a small set of frictaves and plosives. The signal determines if it is a plosive or a frictave by watching the length of the utterance (plosives occur over short periods while frictaves over long). Finally the most appropriate character is chosen.</p>
-<ul>
-<li><a href="http://arjo129.github.com">Return to main page</a> </li>
-</ul>
-</div></div><!-- contents -->
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="subdirs"></a>
+Directories</h2></td></tr>
+<tr class="memitem:dir_7078b0c71f13430410229428d937756d"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_7078b0c71f13430410229428d937756d.html">uSpeech</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 27 2013 10:03:56 for µSpeech by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 25 2014 10:03:42 for µSpeech by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

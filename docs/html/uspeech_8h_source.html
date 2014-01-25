@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.5"/>
-<title>µSpeech: uspeech.h Source File</title>
+<title>µSpeech: Arduino/libraries/uSpeech/uSpeech/uspeech.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">µSpeech
-   &#160;<span id="projectnumber">4.1.1</span>
+   &#160;<span id="projectnumber">4.1.2</span>
    </div>
    <div id="projectbrief">Speech recognition library</div>
   </td>
@@ -65,7 +65,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="files.html"><span>File&#160;List</span></a></li>
     </ul>
   </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -80,13 +79,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_a991eec27578c865874ede3d8ec657c2.html">Arduino</a></li><li class="navelem"><a class="el" href="dir_481cc946b8a81b8d9363a4aad6201160.html">libraries</a></li><li class="navelem"><a class="el" href="dir_7078b0c71f13430410229428d937756d.html">uSpeech</a></li><li class="navelem"><a class="el" href="dir_ae19a192ba29b03414c16007b21660e1.html">uSpeech</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">uspeech.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> uspeech v.4.0.1Alpha</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> uspeech v.4.x.x</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> 2012 Arjo Chakravarty</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> </span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> uspeech is a library that allows sounds to be classified into certain phonemes</span></div>
@@ -107,76 +111,80 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define F_DETECTION 3</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define F_CONSTANT 350</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classsignal.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsignal.html">signal</a>{</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classsignal.html#a3e2d5027e6570321f8d1a823b0d47af0">   25</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a3e2d5027e6570321f8d1a823b0d47af0">arr</a>[32];  </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">int</span> avgPower;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> testCoeff;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classsignal.html#a4604a8a9760752f00af96457a34debf9">   28</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a4604a8a9760752f00af96457a34debf9">minVolume</a>;  </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classsignal.html#ae256fa87a2b25841cda3155d0519172c">   29</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#ae256fa87a2b25841cda3155d0519172c">fconstant</a>;  </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classsignal.html#aa346a5acfecf429893ab85bc4a903875">   30</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#aa346a5acfecf429893ab85bc4a903875">econstant</a>;  </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classsignal.html#ad300e73d67f1870bbbc5cfcece5910ec">   31</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#ad300e73d67f1870bbbc5cfcece5910ec">aconstant</a>;  </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classsignal.html#ad717d6555e102392063d04affb78b95d">   32</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#ad717d6555e102392063d04affb78b95d">vconstant</a>;  </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classsignal.html#a6697308a69e450ec5322b8438a442b36">   33</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a6697308a69e450ec5322b8438a442b36">shconstant</a>; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classsignal.html#aaecf78836054e8f13a6caaf340d0b3c9">   34</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classsignal.html#aaecf78836054e8f13a6caaf340d0b3c9">f_enabled</a>; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classsignal.html#a16d895fcf95efa3327fd7342f7bde145">   35</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a16d895fcf95efa3327fd7342f7bde145">amplificationFactor</a>; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classsignal.html#a16fc90703b77adff91d00f7a80f44059">signal</a>(<span class="keywordtype">int</span> port);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> micPower;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsignal.html#aaba77b67c912d6aa7c36bd335d8381f4">sample</a>();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a0acbadb8a805a5b0feca58904e843313">maxPower</a>();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classsignal.html#aa0c0c4f353dd02096eed32044ac463d7">power</a>();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a85b7cdd5ebc3231add890ef7c561f7c0">complexity</a>(<span class="keywordtype">int</span> <a class="code" href="classsignal.html#aa0c0c4f353dd02096eed32044ac463d7">power</a>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> snr(<span class="keywordtype">int</span> <a class="code" href="classsignal.html#aa0c0c4f353dd02096eed32044ac463d7">power</a>);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsignal.html#a6a19e421bd022a93575032165868a78c">calibrate</a>();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">char</span> <a class="code" href="classsignal.html#a85bf609441248bb75d15d7c2999a77b8">getPhoneme</a>();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">int</span> goertzel(<span class="keywordtype">int</span> freq); <span class="comment">//remove</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> pin;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">int</span> mil;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> maxPos;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">bool</span> silence;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> calib;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> overview[7];</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classsyllable.html">   58</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsyllable.html">syllable</a>{</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">int</span> f,e,o,s,h,v;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classsyllable.html">syllable</a>();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> classify(<span class="keywordtype">char</span> c);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span>* tointptr();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">    #if ARDUINO_ENVIRONMENT &gt; 0</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">void</span> debugPrint();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">    #endif</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span>    </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classsignal_html_ad717d6555e102392063d04affb78b95d"><div class="ttname"><a href="classsignal.html#ad717d6555e102392063d04affb78b95d">signal::vconstant</a></div><div class="ttdeci">int vconstant</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00032">uspeech.h:32</a></div></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classsignal.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsignal.html">signal</a>{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classsignal.html#a3e2d5027e6570321f8d1a823b0d47af0">   28</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a3e2d5027e6570321f8d1a823b0d47af0">arr</a>[32];  </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> avgPower;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> testCoeff;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classsignal.html#a4604a8a9760752f00af96457a34debf9">   31</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a4604a8a9760752f00af96457a34debf9">minVolume</a>;  </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classsignal.html#ae256fa87a2b25841cda3155d0519172c">   32</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#ae256fa87a2b25841cda3155d0519172c">fconstant</a>;  </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classsignal.html#aa346a5acfecf429893ab85bc4a903875">   33</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#aa346a5acfecf429893ab85bc4a903875">econstant</a>;  </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classsignal.html#ad300e73d67f1870bbbc5cfcece5910ec">   34</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#ad300e73d67f1870bbbc5cfcece5910ec">aconstant</a>;  </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classsignal.html#ad717d6555e102392063d04affb78b95d">   35</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#ad717d6555e102392063d04affb78b95d">vconstant</a>;  </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classsignal.html#a6697308a69e450ec5322b8438a442b36">   36</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a6697308a69e450ec5322b8438a442b36">shconstant</a>; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classsignal.html#aaecf78836054e8f13a6caaf340d0b3c9">   37</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classsignal.html#aaecf78836054e8f13a6caaf340d0b3c9">f_enabled</a>; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classsignal.html#a16d895fcf95efa3327fd7342f7bde145">   38</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a16d895fcf95efa3327fd7342f7bde145">amplificationFactor</a>; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classsignal.html#a052c94e3579fe8145fa6a891bd11f9ab">   39</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a052c94e3579fe8145fa6a891bd11f9ab">micPowerThreshold</a>; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> scale;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classsignal.html#aea8e52b903d491e25065ac261139edd2">   41</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="classsignal.html#aea8e52b903d491e25065ac261139edd2">phoneme</a>;   </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classsignal.html#a16fc90703b77adff91d00f7a80f44059">signal</a>(<span class="keywordtype">int</span> port);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> micPower;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsignal.html#aaba77b67c912d6aa7c36bd335d8381f4">sample</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classsignal.html#a0acbadb8a805a5b0feca58904e843313">maxPower</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classsignal.html#aa0c0c4f353dd02096eed32044ac463d7">power</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">int</span> snr(<span class="keywordtype">int</span> <a class="code" href="classsignal.html#aa0c0c4f353dd02096eed32044ac463d7">power</a>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsignal.html#a6a19e421bd022a93575032165868a78c">calibrate</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">char</span> <a class="code" href="classsignal.html#a85bf609441248bb75d15d7c2999a77b8">getPhoneme</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">int</span> calib;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> pin;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> mil;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> maxPos;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">bool</span> silence;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> overview[7];</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> complexity(<span class="keywordtype">int</span> <a class="code" href="classsignal.html#aa0c0c4f353dd02096eed32044ac463d7">power</a>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classsyllable.html">   63</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsyllable.html">syllable</a>{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classsyllable.html#a4cec2f8c6bee7e16ec7071ed630f0c33">   65</a></span>&#160;    <span class="keywordtype">int</span> f,e,o,s,h,<a class="code" href="classsyllable.html#a4cec2f8c6bee7e16ec7071ed630f0c33">v</a>; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="classsyllable.html#a291affba67abd6153d1f915708f69fea">syllable</a>(); </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsyllable.html#ac96f3746c2809f61641bbd84d8a54d6c">classify</a>(<span class="keywordtype">char</span> c); </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span>* <a class="code" href="classsyllable.html#a0098736a4e24ef25f99f5931f557f9be">tointptr</a>(); </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">    #if ARDUINO_ENVIRONMENT &gt; 0 </span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">void</span> <a class="code" href="classsyllable.html#a541d6d839787682f075fee01a498b511">debugPrint</a>(); </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span>};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classsyllable_html_a541d6d839787682f075fee01a498b511"><div class="ttname"><a href="classsyllable.html#a541d6d839787682f075fee01a498b511">syllable::debugPrint</a></div><div class="ttdeci">void debugPrint()</div><div class="ttdef"><b>Definition:</b> <a href="vocab_8cpp_source.html#l00037">vocab.cpp:37</a></div></div>
+<div class="ttc" id="classsignal_html_ad717d6555e102392063d04affb78b95d"><div class="ttname"><a href="classsignal.html#ad717d6555e102392063d04affb78b95d">signal::vconstant</a></div><div class="ttdeci">int vconstant</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00035">uspeech.h:35</a></div></div>
+<div class="ttc" id="classsyllable_html_a0098736a4e24ef25f99f5931f557f9be"><div class="ttname"><a href="classsyllable.html#a0098736a4e24ef25f99f5931f557f9be">syllable::tointptr</a></div><div class="ttdeci">int * tointptr()</div><div class="ttdef"><b>Definition:</b> <a href="vocab_8cpp_source.html#l00055">vocab.cpp:55</a></div></div>
+<div class="ttc" id="classsyllable_html_ac96f3746c2809f61641bbd84d8a54d6c"><div class="ttname"><a href="classsyllable.html#ac96f3746c2809f61641bbd84d8a54d6c">syllable::classify</a></div><div class="ttdeci">void classify(char c)</div><div class="ttdef"><b>Definition:</b> <a href="vocab_8cpp_source.html#l00010">vocab.cpp:10</a></div></div>
 <div class="ttc" id="classsignal_html_a85bf609441248bb75d15d7c2999a77b8"><div class="ttname"><a href="classsignal.html#a85bf609441248bb75d15d7c2999a77b8">signal::getPhoneme</a></div><div class="ttdeci">char getPhoneme()</div><div class="ttdef"><b>Definition:</b> <a href="phoneme_8cpp_source.html#l00005">phoneme.cpp:5</a></div></div>
-<div class="ttc" id="classsignal_html_aa0c0c4f353dd02096eed32044ac463d7"><div class="ttname"><a href="classsignal.html#aa0c0c4f353dd02096eed32044ac463d7">signal::power</a></div><div class="ttdeci">unsigned int power()</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00038">signal.cpp:38</a></div></div>
-<div class="ttc" id="classsyllable_html"><div class="ttname"><a href="classsyllable.html">syllable</a></div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00058">uspeech.h:58</a></div></div>
-<div class="ttc" id="classsignal_html_a3e2d5027e6570321f8d1a823b0d47af0"><div class="ttname"><a href="classsignal.html#a3e2d5027e6570321f8d1a823b0d47af0">signal::arr</a></div><div class="ttdeci">int arr[32]</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00025">uspeech.h:25</a></div></div>
-<div class="ttc" id="classsignal_html_aaecf78836054e8f13a6caaf340d0b3c9"><div class="ttname"><a href="classsignal.html#aaecf78836054e8f13a6caaf340d0b3c9">signal::f_enabled</a></div><div class="ttdeci">bool f_enabled</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00034">uspeech.h:34</a></div></div>
-<div class="ttc" id="classsignal_html_a0acbadb8a805a5b0feca58904e843313"><div class="ttname"><a href="classsignal.html#a0acbadb8a805a5b0feca58904e843313">signal::maxPower</a></div><div class="ttdeci">unsigned int maxPower()</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00066">signal.cpp:66</a></div></div>
-<div class="ttc" id="classsignal_html_a4604a8a9760752f00af96457a34debf9"><div class="ttname"><a href="classsignal.html#a4604a8a9760752f00af96457a34debf9">signal::minVolume</a></div><div class="ttdeci">int minVolume</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00028">uspeech.h:28</a></div></div>
-<div class="ttc" id="classsignal_html"><div class="ttname"><a href="classsignal.html">signal</a></div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00023">uspeech.h:23</a></div></div>
-<div class="ttc" id="classsignal_html_aa346a5acfecf429893ab85bc4a903875"><div class="ttname"><a href="classsignal.html#aa346a5acfecf429893ab85bc4a903875">signal::econstant</a></div><div class="ttdeci">int econstant</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00030">uspeech.h:30</a></div></div>
-<div class="ttc" id="classsignal_html_a6a19e421bd022a93575032165868a78c"><div class="ttname"><a href="classsignal.html#a6a19e421bd022a93575032165868a78c">signal::calibrate</a></div><div class="ttdeci">void calibrate()</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00017">signal.cpp:17</a></div></div>
-<div class="ttc" id="classsignal_html_a16d895fcf95efa3327fd7342f7bde145"><div class="ttname"><a href="classsignal.html#a16d895fcf95efa3327fd7342f7bde145">signal::amplificationFactor</a></div><div class="ttdeci">int amplificationFactor</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00035">uspeech.h:35</a></div></div>
-<div class="ttc" id="classsignal_html_ad300e73d67f1870bbbc5cfcece5910ec"><div class="ttname"><a href="classsignal.html#ad300e73d67f1870bbbc5cfcece5910ec">signal::aconstant</a></div><div class="ttdeci">int aconstant</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00031">uspeech.h:31</a></div></div>
-<div class="ttc" id="classsignal_html_a6697308a69e450ec5322b8438a442b36"><div class="ttname"><a href="classsignal.html#a6697308a69e450ec5322b8438a442b36">signal::shconstant</a></div><div class="ttdeci">int shconstant</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00033">uspeech.h:33</a></div></div>
-<div class="ttc" id="classsignal_html_a85b7cdd5ebc3231add890ef7c561f7c0"><div class="ttname"><a href="classsignal.html#a85b7cdd5ebc3231add890ef7c561f7c0">signal::complexity</a></div><div class="ttdeci">unsigned int complexity(int power)</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00051">signal.cpp:51</a></div></div>
-<div class="ttc" id="classsignal_html_a16fc90703b77adff91d00f7a80f44059"><div class="ttname"><a href="classsignal.html#a16fc90703b77adff91d00f7a80f44059">signal::signal</a></div><div class="ttdeci">signal(int port)</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00005">signal.cpp:5</a></div></div>
-<div class="ttc" id="classsignal_html_ae256fa87a2b25841cda3155d0519172c"><div class="ttname"><a href="classsignal.html#ae256fa87a2b25841cda3155d0519172c">signal::fconstant</a></div><div class="ttdeci">int fconstant</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00029">uspeech.h:29</a></div></div>
-<div class="ttc" id="classsignal_html_aaba77b67c912d6aa7c36bd335d8381f4"><div class="ttname"><a href="classsignal.html#aaba77b67c912d6aa7c36bd335d8381f4">signal::sample</a></div><div class="ttdeci">void sample()</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00025">signal.cpp:25</a></div></div>
+<div class="ttc" id="classsignal_html_aa0c0c4f353dd02096eed32044ac463d7"><div class="ttname"><a href="classsignal.html#aa0c0c4f353dd02096eed32044ac463d7">signal::power</a></div><div class="ttdeci">unsigned int power()</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00048">signal.cpp:48</a></div></div>
+<div class="ttc" id="classsyllable_html"><div class="ttname"><a href="classsyllable.html">syllable</a></div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00063">uspeech.h:63</a></div></div>
+<div class="ttc" id="classsignal_html_a3e2d5027e6570321f8d1a823b0d47af0"><div class="ttname"><a href="classsignal.html#a3e2d5027e6570321f8d1a823b0d47af0">signal::arr</a></div><div class="ttdeci">int arr[32]</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00028">uspeech.h:28</a></div></div>
+<div class="ttc" id="classsignal_html_aaecf78836054e8f13a6caaf340d0b3c9"><div class="ttname"><a href="classsignal.html#aaecf78836054e8f13a6caaf340d0b3c9">signal::f_enabled</a></div><div class="ttdeci">bool f_enabled</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00037">uspeech.h:37</a></div></div>
+<div class="ttc" id="classsignal_html_a0acbadb8a805a5b0feca58904e843313"><div class="ttname"><a href="classsignal.html#a0acbadb8a805a5b0feca58904e843313">signal::maxPower</a></div><div class="ttdeci">unsigned int maxPower()</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00075">signal.cpp:75</a></div></div>
+<div class="ttc" id="classsignal_html_a4604a8a9760752f00af96457a34debf9"><div class="ttname"><a href="classsignal.html#a4604a8a9760752f00af96457a34debf9">signal::minVolume</a></div><div class="ttdeci">int minVolume</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00031">uspeech.h:31</a></div></div>
+<div class="ttc" id="classsyllable_html_a291affba67abd6153d1f915708f69fea"><div class="ttname"><a href="classsyllable.html#a291affba67abd6153d1f915708f69fea">syllable::syllable</a></div><div class="ttdeci">syllable()</div><div class="ttdef"><b>Definition:</b> <a href="vocab_8cpp_source.html#l00003">vocab.cpp:3</a></div></div>
+<div class="ttc" id="classsignal_html"><div class="ttname"><a href="classsignal.html">signal</a></div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00026">uspeech.h:26</a></div></div>
+<div class="ttc" id="classsignal_html_aa346a5acfecf429893ab85bc4a903875"><div class="ttname"><a href="classsignal.html#aa346a5acfecf429893ab85bc4a903875">signal::econstant</a></div><div class="ttdeci">int econstant</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00033">uspeech.h:33</a></div></div>
+<div class="ttc" id="classsignal_html_a6a19e421bd022a93575032165868a78c"><div class="ttname"><a href="classsignal.html#a6a19e421bd022a93575032165868a78c">signal::calibrate</a></div><div class="ttdeci">void calibrate()</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00021">signal.cpp:21</a></div></div>
+<div class="ttc" id="classsignal_html_a16d895fcf95efa3327fd7342f7bde145"><div class="ttname"><a href="classsignal.html#a16d895fcf95efa3327fd7342f7bde145">signal::amplificationFactor</a></div><div class="ttdeci">int amplificationFactor</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00038">uspeech.h:38</a></div></div>
+<div class="ttc" id="classsignal_html_aea8e52b903d491e25065ac261139edd2"><div class="ttname"><a href="classsignal.html#aea8e52b903d491e25065ac261139edd2">signal::phoneme</a></div><div class="ttdeci">char phoneme</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00041">uspeech.h:41</a></div></div>
+<div class="ttc" id="classsignal_html_ad300e73d67f1870bbbc5cfcece5910ec"><div class="ttname"><a href="classsignal.html#ad300e73d67f1870bbbc5cfcece5910ec">signal::aconstant</a></div><div class="ttdeci">int aconstant</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00034">uspeech.h:34</a></div></div>
+<div class="ttc" id="classsyllable_html_a4cec2f8c6bee7e16ec7071ed630f0c33"><div class="ttname"><a href="classsyllable.html#a4cec2f8c6bee7e16ec7071ed630f0c33">syllable::v</a></div><div class="ttdeci">int v</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00065">uspeech.h:65</a></div></div>
+<div class="ttc" id="classsignal_html_a052c94e3579fe8145fa6a891bd11f9ab"><div class="ttname"><a href="classsignal.html#a052c94e3579fe8145fa6a891bd11f9ab">signal::micPowerThreshold</a></div><div class="ttdeci">int micPowerThreshold</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00039">uspeech.h:39</a></div></div>
+<div class="ttc" id="classsignal_html_a6697308a69e450ec5322b8438a442b36"><div class="ttname"><a href="classsignal.html#a6697308a69e450ec5322b8438a442b36">signal::shconstant</a></div><div class="ttdeci">int shconstant</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00036">uspeech.h:36</a></div></div>
+<div class="ttc" id="classsignal_html_a16fc90703b77adff91d00f7a80f44059"><div class="ttname"><a href="classsignal.html#a16fc90703b77adff91d00f7a80f44059">signal::signal</a></div><div class="ttdeci">signal(int port)</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00007">signal.cpp:7</a></div></div>
+<div class="ttc" id="classsignal_html_ae256fa87a2b25841cda3155d0519172c"><div class="ttname"><a href="classsignal.html#ae256fa87a2b25841cda3155d0519172c">signal::fconstant</a></div><div class="ttdeci">int fconstant</div><div class="ttdef"><b>Definition:</b> <a href="uspeech_8h_source.html#l00032">uspeech.h:32</a></div></div>
+<div class="ttc" id="classsignal_html_aaba77b67c912d6aa7c36bd335d8381f4"><div class="ttname"><a href="classsignal.html#aaba77b67c912d6aa7c36bd335d8381f4">signal::sample</a></div><div class="ttdeci">void sample()</div><div class="ttdef"><b>Definition:</b> <a href="signal_8cpp_source.html#l00035">signal.cpp:35</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 27 2013 10:03:56 for µSpeech by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 25 2014 10:03:42 for µSpeech by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

@@ -64,7 +64,8 @@ class syllable{
 public:
     int f,e,o,s,h,v; /*!< Accumulators for the stated characters */
     syllable(); /*!< Constructor for the class*/
-    void classify(char c); /*!< Classifies the character into a vector so as to create a fingerprint for the uttered syllable*/
+    void reset(); /*!< Resets the accumulator so a new syllable can be formed. Call this when you detect silence*/
+    void classify(char c); 
     int* tointptr(); /*!< Returns the vector from the accumulators as an integer pointer */
     #if ARDUINO_ENVIRONMENT > 0 
     void debugPrint(); /*!< Outputs the datain the accumulator vector. Only enabled for arduino.*/

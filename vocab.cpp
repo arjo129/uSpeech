@@ -3,6 +3,9 @@
 syllable::syllable(){
     f = 0; e = 0; o = 0; s = 0; h = 0; v = 0;
 }
+void syllable::reset(){
+    f = 0; e = 0; o = 0; s = 0; h = 0; v = 0;
+}
 /***
  *  Classify a character into f,e,o,s,h; Call during main loop
  *  @param c    the phoneme

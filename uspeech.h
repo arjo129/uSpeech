@@ -1,6 +1,6 @@
 /*
  uspeech v.4.x.x
- 2012 Arjo Chakravarty
+ 2012-2014 Arjo Chakravarty
  
  uspeech is a library that allows sounds to be classified into certain phonemes
  on the Arduino. This creates a simple beginning for a full scale voice recognition
@@ -71,5 +71,5 @@ public:
     void debugPrint(); /*!< Outputs the datain the accumulator vector. Only enabled for arduino.*/
     #endif
 };
-
+//TODO: implement statistics classes.
 #endif

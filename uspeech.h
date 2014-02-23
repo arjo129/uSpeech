@@ -57,6 +57,7 @@ private:
 	unsigned int complexity(int power);
 };
 
+<<<<<<< HEAD
 class statCollector {
 public:
     //Note: May be necessary to change to double type.
@@ -70,6 +71,8 @@ public:
  
 };
 
+=======
+>>>>>>> 427ae8b6cb8d6e772c5f0035507f6aaea02857ce
 /**
  *  Simple Accumulator Vector. Stores simple syllables. Useful for basic word recognition.
  */
@@ -80,7 +83,10 @@ public:
     void reset(); /*!< Resets the accumulator so a new syllable can be formed. Call this when you detect silence*/
     void classify(char c); 
     int* tointptr(); /*!< Returns the vector from the accumulators as an integer pointer */
+<<<<<<< HEAD
     void reset(); /*!< Resets Accumulator*/
+=======
+>>>>>>> 427ae8b6cb8d6e772c5f0035507f6aaea02857ce
     #if ARDUINO_ENVIRONMENT > 0 
     void debugPrint(); /*!< Outputs the datain the accumulator vector. Only enabled for arduino.*/
     #endif

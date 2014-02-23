@@ -1,6 +1,6 @@
 /*
  uspeech v.4.x.x
- 2012 Arjo Chakravarty
+ 2012-2014 Arjo Chakravarty
  
  uspeech is a library that allows sounds to be classified into certain phonemes
  on the Arduino. This creates a simple beginning for a full scale voice recognition
@@ -20,6 +20,9 @@
 #define F_DETECTION 3
 #define F_CONSTANT 350
 
+/**
+ *  The main recognizer class
+ */
 class signal{
 public:
 	int arr[32];  /*!< This is the audio buffer*/
@@ -35,7 +38,7 @@ public:
 	int amplificationFactor; /*!<Amplification factor: Adjust as you need*/
 	int micPowerThreshold; /*!< Ignore anything with micPower below this */
 	int scale;
-	char phoneme;	/*!< the phoneme detected when f was returned */
+	char phoneme;	/*!< The phoneme detected when f was returned */
 	signal(int port);
 	int micPower;
 	void sample();
@@ -54,16 +57,33 @@ private:
 	unsigned int complexity(int power);
 };
 
-class syllable{
+class statCollector {
 public:
-    int f,e,o,s,h,v;
-    syllable();
-    void classify(char c);
-    int* tointptr();
-    #if ARDUINO_ENVIRONMENT > 0
-    void debugPrint();
-    #endif
-    
+    //Note: May be necessary to change to double type.
+    int n,mean,M2,M3,M4;
+    statCollector();
+    int kurtosis();
+    int skew();
+    int _mean();
+    int stdev();
+    void collect(int x);
+ 
 };
 
+/**
+ *  Simple Accumulator Vector. Stores simple syllables. Useful for basic word recognition.
+ */
+class syllable{
+public:
+    int f,e,o,s,h,v; /*!< Accumulators for the stated characters */
+    syllable(); /*!< Constructor for the class*/
+    void reset(); /*!< Resets the accumulator so a new syllable can be formed. Call this when you detect silence*/
+    void classify(char c); 
+    int* tointptr(); /*!< Returns the vector from the accumulators as an integer pointer */
+    void reset(); /*!< Resets Accumulator*/
+    #if ARDUINO_ENVIRONMENT > 0 
+    void debugPrint(); /*!< Outputs the datain the accumulator vector. Only enabled for arduino.*/
+    #endif
+};
+//TODO: implement statistics classes.
 #endif

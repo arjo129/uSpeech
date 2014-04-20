@@ -87,7 +87,7 @@ void syllable::classify(char c){
 			}
 		}	
 		if((cv > prevv)&(prevv<15)){
-			prevcv = cv;
+			prevv = cv;
 			maxv = length;
 			if(currPeak != 'v'){
 				currPeak = 'v';
@@ -128,5 +128,5 @@ int* syllable::tointptr(){
     matrix[5] = s;
     return matrix;
 }
-void syllable::distance(){
+void syllable::distance(syllable s){
 }

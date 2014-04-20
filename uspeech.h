@@ -79,7 +79,7 @@ public:
 class syllable{
 public:
     int f,e,o,s,h,v; /*!< Accumulators for the stated characters */
-	int maxf,maxe,o,maxs,maxh,maxv; /*!< These can be used to calculate skewness like this: \frac{1}{2}\frac{maxs}{length}*/
+	int maxf,maxe,maxo,maxs,maxh,maxv; /*!< These can be used to calculate skewness like this: \frac{1}{2}\frac{maxs}{length}*/
 	int modalityf, modalitye, modalityo, modalitys, modalityh, modalityv; /*!< These are indicative of whether or not there were two peaks*/
 	int length; /*!< length of utterance */
     syllable(); /*!< Constructor for the class*/

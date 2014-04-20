@@ -6,6 +6,10 @@
 # Datatypes (KEYWORD1)
 #######################################
 
+signal 		KEYWORD1
+syllable	KEYWORD1
+statcollector	KEYWORD1
+
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
@@ -17,9 +21,6 @@ calibrate	KEYWORD2
 #######################################
 # Instances (KEYWORD2)
 #######################################
-
-signal 		KEYWORD2
-syllable	KEYWORD2
 #######################################
 # Constants (LITERAL1)
 #######################################

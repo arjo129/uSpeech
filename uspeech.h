@@ -56,7 +56,9 @@ private:
 	unsigned int overview[7];
 	unsigned int complexity(int power);
 };
-
+/**
+* Considering to delete this if the skewness actually works
+*/
 class statCollector {
 public:
     //Note: May be necessary to change to double type.
@@ -77,13 +79,22 @@ public:
 class syllable{
 public:
     int f,e,o,s,h,v; /*!< Accumulators for the stated characters */
+	int maxf,maxe,o,maxs,maxh,maxv; /*!< These can be used to calculate skewness like this: \frac{1}{2}\frac{maxs}{length}*/
+	int modalityf, modalitye, modalityo, modalitys, modalityh, modalityv; /*!< These are indicative of whether or not there were two peaks*/
+	int length; /*!< length of utterance */
     syllable(); /*!< Constructor for the class*/
     void reset(); /*!< Resets the accumulator so a new syllable can be formed. Call this when you detect silence*/
     void classify(char c); 
     int* tointptr(); /*!< Returns the vector from the accumulators as an integer pointer */
     #if ARDUINO_ENVIRONMENT > 0 
     void debugPrint(); /*!< Outputs the datain the accumulator vector. Only enabled for arduino.*/
+	void distance(syllable s);
     #endif
+private:
+	char cf,ce,co,cs,ch,cv; /*!< Temporary accumulators */
+	char prevf,preve,prevo,prevs,prevh,prevf; /*!< Temporary accumulators */
+	char currPeak;
 };
 //TODO: implement statistics classes.
+
 #endif

@@ -92,7 +92,7 @@ public:
     #endif
 private:
 	char cf,ce,co,cs,ch,cv; /*!< Temporary accumulators */
-	char prevf,preve,prevo,prevs,prevh,prevf; /*!< Temporary accumulators */
+	char prevf,preve,prevo,prevs,prevh, prevv; /*!< Temporary accumulators */
 	char currPeak;
 };
 //TODO: implement statistics classes.

@@ -4,11 +4,14 @@ syllable::syllable(){
     f = 0; e = 0; o = 0; s = 0; h = 0; v = 0; 
 	length = 0; cf = 0; ce = 0; co = 0; cs = 0; ch = 0; cv = 0;
 	modalityf = 0; modalitye = 0; modalityo = 0; modalitys = 0; modalityh = 0; modalityv = 0;
+	expectSp =1; plosiveCount = 0;
+
 }
 void syllable::reset(){
     f = 0; e = 0; o = 0; s = 0; h = 0; v = 0;
 	length = 0; cf = 0; ce = 0; co = 0; cs = 0; ch = 0; cv = 0;
 	modalityf = 0; modalitye = 0; modalityo = 0; modalitys = 0; modalityh = 0; modalityv = 0;
+	expectSp =1; plosiveCount = 0;
 }
 /***
  *  Classify a character into f,e,o,s,h; Call during main loop
@@ -16,6 +19,14 @@ void syllable::reset(){
  */
 void syllable::classify(char c){
 	length++;
+	if(expectSp==0){
+		if(c!=' '){ //I don't trust the compiler's optimizer
+			expectSp = 1;
+			if((millis()-lastTime)<MAX_PLOSIVETIME){
+				plosiveCount++;
+			}
+		}
+	}
     switch (c) {
         case 'f':
             f++;
@@ -41,12 +52,22 @@ void syllable::classify(char c){
             s++;
 			cs++;
             break;
+		case ' ':
+			if(expectSp!=0){
+				expectSp = 0;
+#if ARDUINO_ENVIRONMENT > 0
+				lastTime = millis();
+#endif
+			}
+			else{
+			}
+			break;
         default:
             break;
     }
-	//Repeat 16 times
-	if ((length&15) == 0){
-		if((cf > prevf)&(prevf<15)){
+	//Repeat every 
+	if ((length&PROCESS_SKEWNESS_TIME) == 0){
+		if((cf > prevf)&(prevf<PROCESS_SKEWNESS_TIME)){
 			prevf = cf;
 			maxf = length;
 			if(currPeak != 'f'){
@@ -54,7 +75,7 @@ void syllable::classify(char c){
 				modalityf++;
 			}
 		}
-		if((ce > preve)&(preve<15)){
+		if((ce > preve)&(preve<PROCESS_SKEWNESS_TIME)){
 			preve = ce;
 			maxe = length;
 			if(currPeak != 'e'){
@@ -62,7 +83,7 @@ void syllable::classify(char c){
 				modalitye++;
 			}
 		}
-		if((co > prevo)&(prevo<15)){
+		if((co > prevo)&(prevo<PROCESS_SKEWNESS_TIME)){
 			prevo = co;
 			maxo = length;
 			if(currPeak != 'o'){
@@ -70,7 +91,7 @@ void syllable::classify(char c){
 				modalityo++;
 			}
 		}
-		if((cs > prevs)&(prevs<15)){
+		if((cs > prevs)&(prevs<PROCESS_SKEWNESS_TIME)){
 			prevs = cs;
 			maxs = length;
 			if(currPeak != 's'){
@@ -78,7 +99,7 @@ void syllable::classify(char c){
 				modalitys++;
 			}
 		}
-		if((ch > prevh)&(prevh<15)){
+		if((ch > prevh)&(prevh<PROCESS_SKEWNESS_TIME)){
 			prevh = ch;
 			maxh = length;
 			if(currPeak != 'h'){
@@ -101,7 +122,7 @@ void syllable::classify(char c){
 
 #if ARDUINO_ENVIRONMENT > 0
 void syllable::debugPrint(){
-    Serial.print("[ ");
+    Serial.print("Accum: [ ");
     Serial.print(f);
     Serial.print(", ");
     Serial.print(e);

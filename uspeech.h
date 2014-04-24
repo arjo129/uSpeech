@@ -19,7 +19,8 @@
 #define SILENCE 2000
 #define F_DETECTION 3
 #define F_CONSTANT 350
-
+#define MAX_PLOSIVETIME 1000
+#define PROCESS_SKEWNESS_TIME 15
 /**
  *  The main recognizer class
  */
@@ -35,7 +36,7 @@ public:
  	int vconstant;  /*!< This is the threshold for /z/ /v/ /w/, configure it yourself */
 	int shconstant; /*!< This is the threshold for /sh/ /ch/, above this everything else is regarded as /s/ */
 	bool f_enabled; /*!< Set this to false if you do not want to detect /f/s */
-	int amplificationFactor; /*!<Amplification factor: Adjust as you need*/
+	int amplificationFactor; /*!< Amplification factor: Adjust as you need*/
 	int micPowerThreshold; /*!< Ignore anything with micPower below this */
 	int scale;
 	char phoneme;	/*!< The phoneme detected when f was returned */
@@ -82,6 +83,7 @@ public:
 	int maxf,maxe,maxo,maxs,maxh,maxv; /*!< These can be used to calculate skewness like this: \frac{1}{2}\frac{maxs}{length}*/
 	int modalityf, modalitye, modalityo, modalitys, modalityh, modalityv; /*!< These are indicative of whether or not there were two peaks*/
 	int length; /*!< length of utterance */
+	int plosiveCount;
     syllable(); /*!< Constructor for the class*/
     void reset(); /*!< Resets the accumulator so a new syllable can be formed. Call this when you detect silence*/
     void classify(char c); 
@@ -93,7 +95,8 @@ public:
 private:
 	char cf,ce,co,cs,ch,cv; /*!< Temporary accumulators */
 	char prevf,preve,prevo,prevs,prevh, prevv; /*!< Temporary accumulators */
-	char currPeak;
+	char currPeak, expectSp;
+	unsigned long lastTime;
 };
 //TODO: implement statistics classes.
 

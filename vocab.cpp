@@ -29,42 +29,42 @@ void syllable::classify(char c){
 	}
     switch (c) {
         case 'f':
-            f++;
-			cf++;
-            break;
+            	f++;
+		cf++;
+            	break;
         case 'e':
-            e++;
-			ce++;
-            break;
+            	e++;
+		ce++;
+            	break;
         case 'o':
-            o++;
-			co++;
-            break;
+            	o++;
+		co++;
+            	break;
         case 'v':
-            v++;
-			cv++;
-            break;
+		v++;
+		cv++;
+            	break;
         case 'h':
-            h++;
-			ch++;
-            break;
+		h++;
+		ch++;
+            	break;
         case 's':
-            s++;
-			cs++;
-            break;
-		case ' ':
-			if(expectSp!=0){
-				expectSp = 0;
+		s++;
+		cs++;
+           	break;
+	case ' ':
+		if(expectSp!=0){
+			expectSp = 0;
 #if ARDUINO_ENVIRONMENT > 0
-				lastTime = millis();
+			lastTime = millis();
 #endif
-			}
-			else{
-			}
-			break;
+		}
+		else{
+		}
+		break;
         default:
-            break;
-    }
+		break;
+    	}
 	//Repeat every 
 	if ((length&PROCESS_SKEWNESS_TIME) == 0){
 		if((cf > prevf)&(prevf<PROCESS_SKEWNESS_TIME)){
@@ -104,7 +104,7 @@ void syllable::classify(char c){
 			maxh = length;
 			if(currPeak != 'h'){
 				currPeak = 'h';
-				modalityf++;
+				modalityh++;
 			}
 		}	
 		if((cv > prevv)&(prevv<15)){
@@ -112,7 +112,7 @@ void syllable::classify(char c){
 			maxv = length;
 			if(currPeak != 'v'){
 				currPeak = 'v';
-				modalityf++;
+				modalityv++;
 			}
 		}
 		cf = 0; ce = 0; co = 0; cs = 0; ch = 0; cv = 0;
@@ -122,32 +122,74 @@ void syllable::classify(char c){
 
 #if ARDUINO_ENVIRONMENT > 0
 void syllable::debugPrint(){
-    Serial.print("Accum: [ ");
-    Serial.print(f);
-    Serial.print(", ");
-    Serial.print(e);
-    Serial.print(", ");
-    Serial.print(o);
-    Serial.print(", ");
-    Serial.print(v);
-    Serial.print(", ");
-    Serial.print(h);
-    Serial.print(", ");
-    Serial.print(s);
-    Serial.print("]");
-   
+    	Serial.print("{Accum: [ ");
+    	Serial.print(f);
+    	Serial.print(", ");
+    	Serial.print(e);
+    	Serial.print(", ");
+    	Serial.print(o);
+    	Serial.print(", ");
+    	Serial.print(v);
+    	Serial.print(", ");
+    	Serial.print(h);
+    	Serial.print(", ");
+    	Serial.print(s);
+    	Serial.print("], \n");
+	Serial.print("Modality: [");
+	Serial.print(modalityf);
+	Serial.print(",");
+	Serial.print(modalitye);
+	Serial.print(",");
+	Serial.print(modalityo);
+	Serial.print(",");
+	Serial.print(modalityv);
+	Serial.print(",");
+	Serial.print(modalitys);
+	Serial.print(",");
+	Serial.print(modalityh);
+	Serial.print("],");
+	Serial.print("Peak:[");
+	Serial.print(maxf);
+	Serial.print(",\n");
+	Serial.print(maxe);
+	Serial.print(",");
+	Serial.print(maxo);
+	Serial.print(",");
+	Serial.print(maxv);
+	Serial.print(",");
+	Serial.print(maxs);
+	Serial.print(",");
+	Serial.print(maxh);
+	Serial.print("],\n");
+	Serial.print("length:");
+	Serial.print(length);
+	Serial.print("\n}");
+	
 }
 #endif
 
 int* syllable::tointptr(){
-    static int matrix[6];
-    matrix[0] = f;
-    matrix[1] = e;
-    matrix[2] = o;
-    matrix[3] = v;
-    matrix[4] = h;
-    matrix[5] = s;
-    return matrix;
+    	static int matrix[19];
+    	matrix[0] = f;
+    	matrix[1] = e;
+    	matrix[2] = o;
+    	matrix[3] = v;
+    	matrix[4] = h;
+    	matrix[5] = s;
+	matrix[6] = modalityf;
+        matrix[7] = modalitye;
+        matrix[8] = modalityo;
+        matrix[9] = modalityv;
+        matrix[10] = modalityh;
+        matrix[11] = modalitys;
+	matrix[12] = maxf;
+        matrix[13] = maxe;
+        matrix[14] = maxo;
+        matrix[15] = maxv;
+        matrix[16] = maxh;
+        matrix[17] = maxs;
+	matrix[18] = length;
+    	return matrix;
 }
 void syllable::distance(syllable s){
 }

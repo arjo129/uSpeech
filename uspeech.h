@@ -13,7 +13,9 @@
 #if ARDUINO_ENVIRONMENT > 0
     #include "Arduino.h"
 #endif
-
+#ifdef PICKLE
+#include <string.h>
+#endif
 #include <math.h>
 #include <stdlib.h>
 #define SILENCE 2000
@@ -80,10 +82,10 @@ public:
 class syllable{
 public:
     int f,e,o,s,h,v; /*!< Accumulators for the stated characters */
-	int maxf,maxe,maxo,maxs,maxh,maxv; /*!< These can be used to calculate skewness like this: \frac{1}{2}\frac{maxs}{length}*/
+	int maxf,maxe,maxo,maxs,maxh,maxv; /*!< These can be used to calculate skewness like this: \frac{1}{2}-\frac{maxs}{length}*/
 	int modalityf, modalitye, modalityo, modalitys, modalityh, modalityv; /*!< These are indicative of whether or not there were two peaks*/
 	int length; /*!< length of utterance */
-	int plosiveCount;
+	int plosiveCount; /*< Counts the number of plosives*/
     syllable(); /*!< Constructor for the class*/
     void reset(); /*!< Resets the accumulator so a new syllable can be formed. Call this when you detect silence*/
     void classify(char c); 
@@ -91,6 +93,11 @@ public:
     #if ARDUINO_ENVIRONMENT > 0 
     void debugPrint(); /*!< Outputs the datain the accumulator vector. Only enabled for arduino.*/
 	void distance(syllable s);
+	
+    #endif
+    #ifdef PICKLE
+    	void dePickle(char* string);
+    	char* Pickle();
     #endif
 private:
 	char cf,ce,co,cs,ch,cv; /*!< Temporary accumulators */

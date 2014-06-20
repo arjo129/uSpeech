@@ -163,7 +163,9 @@ void syllable::debugPrint(){
 	Serial.print("],\n");
 	Serial.print("length:");
 	Serial.print(length);
-	Serial.print("\n}");
+	Serial.print(",\nplosives:");
+	Serial.print(plosiveCount);
+	Serial.print(" }");
 	
 }
 #endif
@@ -174,22 +176,23 @@ int* syllable::tointptr(){
     	matrix[1] = e;
     	matrix[2] = o;
     	matrix[3] = v;
-    	matrix[4] = h;
-    	matrix[5] = s;
+    	matrix[4] = s;
+    	matrix[5] = h;
 	matrix[6] = modalityf;
         matrix[7] = modalitye;
         matrix[8] = modalityo;
         matrix[9] = modalityv;
-        matrix[10] = modalityh;
-        matrix[11] = modalitys;
+        matrix[10] = modalitys;
+        matrix[11] = modalityh;
 	matrix[12] = maxf;
         matrix[13] = maxe;
         matrix[14] = maxo;
         matrix[15] = maxv;
-        matrix[16] = maxh;
-        matrix[17] = maxs;
+        matrix[16] = maxs;
+        matrix[17] = maxh;
 	matrix[18] = length;
-    	return matrix;
+    	matrix[19] = plosiveCount;
+	return matrix;
 }
 void syllable::distance(syllable s){
 }

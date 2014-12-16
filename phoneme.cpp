@@ -28,9 +28,6 @@ char signal::getPhoneme()
 	coeff /= 7;
 
 	micPower = 0.05 * maxPower() + (1 - 0.05) * micPower;
-	if (micPower < micPowerThreshold) {
-	    return ' ';
-	}
 
 	testCoeff = coeff;
 	//Serial.print(F("coeff: ")); Serial.println(coeff); //Use this for debugging
@@ -60,9 +57,10 @@ char signal::getPhoneme()
 	return phoneme;
 
     }
-
-    micPower = 0;
-    testCoeff = 0;
-    return ' ';
+    else{
+    	micPower = 0;
+    	testCoeff = 0;
+    	return ' ';
+    }
 }
 

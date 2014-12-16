@@ -171,7 +171,7 @@ void syllable::debugPrint(){
 #endif
 
 int* syllable::tointptr(){
-    	static int matrix[19];
+    	static int matrix[20];
     	matrix[0] = f;
     	matrix[1] = e;
     	matrix[2] = o;

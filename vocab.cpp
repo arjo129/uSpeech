@@ -1,14 +1,14 @@
 #include "uspeech.h"
 
 syllable::syllable(){
-    f = 0; e = 0; o = 0; s = 0; h = 0; v = 0; 
+        f = 0; e = 0; o = 0; s = 0; h = 0; v = 0; 
 	length = 0; cf = 0; ce = 0; co = 0; cs = 0; ch = 0; cv = 0;
 	modalityf = 0; modalitye = 0; modalityo = 0; modalitys = 0; modalityh = 0; modalityv = 0;
 	expectSp =1; plosiveCount = 0;
 
 }
 void syllable::reset(){
-    f = 0; e = 0; o = 0; s = 0; h = 0; v = 0;
+        f = 0; e = 0; o = 0; s = 0; h = 0; v = 0;
 	length = 0; cf = 0; ce = 0; co = 0; cs = 0; ch = 0; cv = 0;
 	modalityf = 0; modalitye = 0; modalityo = 0; modalitys = 0; modalityh = 0; modalityv = 0;
 	expectSp =1; plosiveCount = 0;

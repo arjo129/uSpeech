@@ -18,6 +18,7 @@
 #endif
 #include <math.h>
 #include <stdlib.h>
+#include <stdint.h>
 #define SILENCE 2000
 #define F_DETECTION 3
 #define F_CONSTANT 350

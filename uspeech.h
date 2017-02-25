@@ -28,36 +28,36 @@
  */
 class signal{
 public:
-	int arr[32];  /*!< This is the audio buffer*/
-	int avgPower;
-	int testCoeff;
-	int minVolume;  /*!< This is the highest audio power that should be considered ready */
-	int fconstant;  /*!< This is the threshold for /f/, configure it yourself */
-	int econstant;  /*!< This is the threshold for /ee/, /i/, configure it yourself */
-	int aconstant;  /*!< This is the threshold for /a/ /o/ /r/ /l/, configure it yourself */
- 	int vconstant;  /*!< This is the threshold for /z/ /v/ /w/, configure it yourself */
-	int shconstant; /*!< This is the threshold for /sh/ /ch/, above this everything else is regarded as /s/ */
+	uint16_t arr[32];  /*!< This is the audio buffer*/
+	uint16_t avgPower;
+	uint16_t testCoeff;
+	uint16_t minVolume;  /*!< This is the highest audio power that should be considered ready */
+	uint16_t fconstant;  /*!< This is the threshold for /f/, configure it yourself */
+	uint16_t econstant;  /*!< This is the threshold for /ee/, /i/, configure it yourself */
+	uint16_t aconstant;  /*!< This is the threshold for /a/ /o/ /r/ /l/, configure it yourself */
+ 	uint16_t vconstant;  /*!< This is the threshold for /z/ /v/ /w/, configure it yourself */
+	uint16_t shconstant; /*!< This is the threshold for /sh/ /ch/, above this everything else is regarded as /s/ */
 	bool f_enabled; /*!< Set this to false if you do not want to detect /f/s */
-	int amplificationFactor; /*!< Amplification factor: Adjust as you need*/
-	int micPowerThreshold; /*!< Ignore anything with micPower below this */
-	int scale;
+	uint16_t amplificationFactor; /*!< Amplification factor: Adjust as you need*/
+	uint16_t micPowerThreshold; /*!< Ignore anything with micPower below this */
+	uint16_t scale;
 	char phoneme;	/*!< The phoneme detected when f was returned */
-	signal(int port);
-	int micPower;
+	signal(uint16_t port);
+	uint16_t micPower;
 	void sample();
-	unsigned int maxPower();
-	unsigned int power();
-	int snr(int power);
+	unsigned uint16_t maxPower();
+	unsigned uint16_t power();
+	uint16_t snr(uint16_t power);
 	void calibrate();
 	char getPhoneme();
-	int calib;
+	uint16_t calib;
 private:
-	int pin;
-	int mil;
-	int maxPos;
+	uint16_t pin;
+	uint16_t mil;
+	uint16_t maxPos;
 	bool silence;
-	unsigned int overview[7];
-	unsigned int complexity(int power);
+	unsigned uint16_t overview[7];
+	unsigned uint16_t complexity(uint16_t power);
 };
 /**
 * Considering to delete this if the skewness actually works
@@ -65,13 +65,13 @@ private:
 class statCollector {
 public:
     //Note: May be necessary to change to double type.
-    int n,mean,M2,M3,M4;
+    uint16_t n,mean,M2,M3,M4;
     statCollector();
-    int kurtosis();
-    int skew();
-    int _mean();
-    int stdev();
-    void collect(int x);
+    uint16_t kurtosis();
+    uint16_t skew();
+    uint16_t _mean();
+    uint16_t stdev();
+    void collect(uint16_t x);
  
 };
 
@@ -81,15 +81,15 @@ public:
  */
 class syllable{
 public:
-    int f,e,o,s,h,v; /*!< Accumulators for the stated characters */
-	int maxf,maxe,maxo,maxs,maxh,maxv; /*!< These can be used to calculate skewness like this: \frac{1}{2}-\frac{maxs}{length}*/
-	int modalityf, modalitye, modalityo, modalitys, modalityh, modalityv; /*!< These are indicative of whether or not there were two peaks*/
-	int length; /*!< length of utterance */
-	int plosiveCount; /*< Counts the number of plosives*/
+    uint16_t f,e,o,s,h,v; /*!< Accumulators for the stated characters */
+	uint16_t maxf,maxe,maxo,maxs,maxh,maxv; /*!< These can be used to calculate skewness like this: \frac{1}{2}-\frac{maxs}{length}*/
+	uint16_t modalityf, modalitye, modalityo, modalitys, modalityh, modalityv; /*!< These are indicative of whether or not there were two peaks*/
+	uint16_t length; /*!< length of utterance */
+	uint16_t plosiveCount; /*< Counts the number of plosives*/
     syllable(); /*!< Constructor for the class*/
     void reset(); /*!< Resets the accumulator so a new syllable can be formed. Call this when you detect silence*/
     void classify(char c); 
-    int* tointptr(); /*!< Returns the vector from the accumulators as an integer pointer */
+    uint16_t* tointptr(); /*!< Returns the vector from the accumulators as an integer pointer */
     #if ARDUINO_ENVIRONMENT > 0 
     void debugPrint(); /*!< Outputs the datain the accumulator vector. Only enabled for arduino.*/
 	void distance(syllable s);

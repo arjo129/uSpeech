@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import tkinter
+from tkinter import filedialog
 import random
 import math
 import pyaudio
@@ -34,6 +35,8 @@ class popupWindow(object):
 		self.top.destroy()
  
 class UI:
+	def save_dialog(self):
+		f = filedialog.asksaveasfile(defaultextension=".speech")
 	def recording_thread(self):
 		self.buffer = [[],[]]
 		while self.recording_mode == "recording":
@@ -77,8 +80,8 @@ class UI:
 			i+=1
 			for item in line:
 				self.plot.create_line(index, prev_val,
-                                                      index+600/len(line),
-                                                      100-90*(item-min_val)/(max_val-min_val), fill=line_color)
+						      index+600/len(line),
+						      100-90*(item-min_val)/(max_val-min_val), fill=line_color)
 				index+=600/len(line)
 				prev_val = 100-90*(item-min_val)/(max_val-min_val)
 		self.plot.update()      
@@ -89,7 +92,7 @@ class UI:
 	def __init__(self):
 		self.markers = []
 		self.buffer = [[math.sin(math.pi/20*x) for x in range(200)],
-                               [math.cos(math.pi/20*x) for x in range(200)]]
+			       [math.cos(math.pi/20*x) for x in range(200)]]
 		self.recording_mode = "Marking"
 		self.top = tkinter.Tk()
 		self.menu = tkinter.Menu(self.top)
@@ -97,7 +100,7 @@ class UI:
 		filemenu = tkinter.Menu(self.menu, tearoff=0)
 		filemenu.add_command(label="Open existing recording", command=hello)
 		filemenu.add_command(label="New recording", command=self.record)
-		filemenu.add_command(label="Save", command=hello)
+		filemenu.add_command(label="Save", command=self.save_dialog)
 		self.menu.add_cascade(label="File", menu=filemenu)
 
 		# The edit menu

@@ -1,44 +1,77 @@
-#define T1_MASK 0xff000000
-#define T2_MASK 0x000ff000
-#define T3_MASK 0x000000ff
-#define TALL_MASK 0xff0ff0ff
-
 #include "matrix.h"
 
-_TPackMatrix::_TPackMatrix(size_t col, size_t rows){
+_TPackMatrix::_TPackMatrix(int8_t* vali, size_t col, size_t row) {
 	rows = row;
-	columns = col;
-	values = (uint32_t*)malloc(rows*columns*sizeof(int8_t)/3);
-}
-
-_TPackMatrix::_TPackMatrix(int8_t* val, size_t col, size_t row){
-	rows = row;
-	columns = col;
-	size_t size = rows*columns;
+	column = col;
+	size_t size = rows*column;
 	size_t orig_size = size;
-	if(size%3) {
+	if (size % 3) {
 		size /= 3;
 		size += 1;
-	} else {
+	}
+	else {
 		size /= 3;
 	}
-	values = (uint32_t*)malloc(size*sizeof(int8_t));
-	int8_t* val = values;
-	for(size_t i = 0; i < size; i++){
-		for(size_t j = 0; j < 3; j++){
-			if(i*3+j < orig_size){
-				uint32_t castable = (uint32_t)orig_size;
-				switch(j){
-					case 0:
-						val[i] = castable<<24;
-					case 1:
-						val[i] |= castable<<12;
-					case 2:
-						val[i] |= castable;
+	values = (uint32_t*)malloc(size * sizeof(uint32_t));
+	memset(values, 0, size * sizeof(uint32_t));
+	length = size;
+	for (size_t i = 0; i < size; i++) {
+		for (size_t j = 0; j < 3; j++) {
+			if (i * 3 + j < orig_size) {
+				uint32_t castable = (uint32_t)vali[i*3+j];
+				switch (j) {
+				case 0:
+					values[i] = castable;
+					break;
+				case 1:
+					values[i] |= castable << 12;
+					break;
+				case 2:
+					values[i] |= castable << 23;
+					break;
 				}
 			}
 		}
-		val++;
 	}
 }
 
+_TPackMatrix::_TPackMatrix(size_t col, size_t row){
+	rows = row;
+	column = col;
+	size_t size = rows*column;
+	size_t orig_size = size;
+	if (size % 3) {
+		size /= 3;
+		size += 1;
+	}
+	else {
+		size /= 3;
+	}
+	values = (uint32_t*)malloc(size * sizeof(uint32_t));
+	memset(values, 0, size * sizeof(uint32_t));
+	length = size;
+}
+
+void _TPackMatrix::add(_TPackMatrix * other, _TPackMatrix * result){
+	for (size_t i = 0; i < length; i++) {
+		result->values[i] = other->values[i]+values[i];
+		result->values[i] &= TALL_MASK;
+	}
+}
+
+void _TPackMatrix::sub(_TPackMatrix * other, _TPackMatrix * result){
+	for (size_t i = 0; i < length; i++) {
+		result->values[i] = values[i]-other->values[i];
+		result->values[i] &= TALL_MASK;
+	}
+}
+
+#ifdef debug_tmatrix
+void _TPackMatrix::debug_out() {
+	for (size_t l = 0; l < length; l++) {
+		printf("0x%x:\n", values[l]);
+		printf("%d,", values[l] & T1_MASK );
+		printf("%d,", (values[l] & T2_MASK) >> 12);
+		printf("%d\n",(values[l] & T3_MASK) >> 23);
+	}
+}

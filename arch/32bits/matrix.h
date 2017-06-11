@@ -9,22 +9,32 @@
 #ifndef FAST_MATH_MATRIX_H
 #define FAST_MATH_MATRIX_H
 
-#include <stdlib.h>
 #include <stdint.h>
+#include <stdlib.h>
+
+#define debug_tmatrix // comment out in release mode
+#ifdef debug_tmatrix
+	#include <stdio.h>
+#endif
+#define T3_MASK 0x7fc00000
+#define T2_MASK 0x000ff000
+#define T1_MASK 0x000000ff
+#define TALL_MASK 0x7fcff0ff
 
 class _TPackMatrix {
 private:
-	size_t column, rows;
-	
+	size_t column, rows, length;
+
 public:
-    uint32_t* values;
-	_TPackMatrix(int8_t* val, size_t col, size_t row);
-	_TPackMatrix(size_t values, size_t col, size_t row);
-	/*
-	void matmul(_TPackMatrix* my_mat1, _TPackMatrix* my_mat2, _TPackMatrix* result);
-	void dft(); //Performs in-place DFT
-	operator+=(_TPackMatrix *t);
-	operator-=(_TPackMatrix *t);
-	*/
-}
+	uint32_t* values;
+	_TPackMatrix(int8_t *val, size_t col, size_t row);
+	_TPackMatrix(size_t col, size_t row);
+	void add(_TPackMatrix *other, _TPackMatrix *result);
+	void sub(_TPackMatrix *other, _TPackMatrix *result);
+
+#ifdef debug_tmatrix
+	void debug_out();
+#endif
+};
+
 #endif

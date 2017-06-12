@@ -65,7 +65,20 @@ void _TPackMatrix::sub(_TPackMatrix * other, _TPackMatrix * result){
 		result->values[i] &= TALL_MASK;
 	}
 }
-
+uint8_t _TPackMatrix::get(size_t x, size_t y)
+{
+	size_t offset = x*column+y;
+	int j = offset % 3;
+	switch (j) {
+	case 0:
+		return (uint8_t)(values[offset / 3] & T1_MASK);
+	case 1:
+		return (uint8_t)((values[offset / 3] & T2_MASK) >> 12);
+	case 2:
+		return (uint8_t)((values[offset / 3] & T3_MASK) >> 23);
+	}
+	return 0;
+}
 #ifdef debug_tmatrix
 void _TPackMatrix::debug_out() {
 	for (size_t l = 0; l < length; l++) {

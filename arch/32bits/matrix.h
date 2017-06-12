@@ -31,7 +31,7 @@ public:
 	_TPackMatrix(size_t col, size_t row);
 	void add(_TPackMatrix *other, _TPackMatrix *result);
 	void sub(_TPackMatrix *other, _TPackMatrix *result);
-
+	uint8_t get(size_t x, size_t y);
 #ifdef debug_tmatrix
 	void debug_out();
 #endif

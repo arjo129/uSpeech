@@ -6,7 +6,7 @@ import random
 import math
 import pyaudio
 import threading
-
+import wave
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
@@ -37,6 +37,12 @@ class popupWindow(object):
 		self.top.destroy()
  
 class UI:
+	def open_dialog(self):
+		f = filedialog.askopenfilename(defaultextension=".wav")
+		if f == "":
+			return
+		my_file = wave.open(f,"r")
+		
 	def save_dialog(self):
 		f = filedialog.asksaveasfile(defaultextension=".speech")
 		if f is None:
@@ -144,6 +150,7 @@ class UI:
 		filemenu = tkinter.Menu(self.menu, tearoff=0)
 		filemenu.add_command(label="New recording", command=self.record)
 		filemenu.add_command(label="Save", command=self.save_dialog)
+		filemenu.add_command(label="Import Recording", command=self.open_dialog)
 		self.menu.add_cascade(label="File", menu=filemenu)
 
 		# The edit menu

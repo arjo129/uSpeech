@@ -67,8 +67,9 @@ class UI:
 			for i in readings:
 				total+= 100*abs(float(i)-prev)
 				prev = float(i)
-			recording = map(abs,readings)
+			recording = map(lambda x: abs(x-sum(readings)/len(readings)),readings)
 			power = sum(recording)
+			print(sum(readings)/len(readings))
 			self.buffer[0].append(power)
 			self.buffer[1].append(total/power)
 		

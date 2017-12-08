@@ -17,7 +17,7 @@ def write_log(callback, names, logs, batch_no):
 def model():
     adam = optimizers.adam(lr=0.05)
     model = Sequential()
-    model.add(Bidirectional(LSTM(60), input_shape=(None, 15)))
+    model.add(Bidirectional(LSTM(20), input_shape=(None, 2)))
     model.add(Dense(len(interested_words), activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer=adam)
     return model

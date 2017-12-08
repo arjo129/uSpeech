@@ -19,12 +19,12 @@ def get_batch(dataset, batchsize=32, batchtype="train"):
         word = random.choice(interested_words) 
         if word != "unknown" and word !="_background_":
             filename = random.choice(dataset[word][batchtype])
-            X.append(get_mfcc_vec(wav2arr(word+"/"+filename)))
+            X.append(get_uspeech_vec(wav2arr(word+"/"+filename)))
         elif word == "_background_":
-            X.append(get_mfcc_vec(get_silence()))
+            X.append(get_uspeech_vec(get_silence()))
         else:
             filename = random.choice(dataset[word][batchtype])
-            X.append(get_mfcc_vec(wav2arr(filename)))
+            X.append(get_uspeech_vec(wav2arr(filename)))
         output = [0]*len(interested_words)
         output[interested_words.index(word)] = 1
         Y.append(output)

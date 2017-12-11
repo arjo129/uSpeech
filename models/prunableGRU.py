@@ -1,9 +1,10 @@
-from tensorflow.python.ops import rnn_cell_impl
+import tensorflow as tf
+from tensorflow.contrib.rnn import RNNCell
 from tensorflow.python.ops import variable_scope as vs
 from tensorflow.python.ops import math_ops
 from tensorflow.python.framework.ops import convert_to_tensor
 
-class PrunableGRU(rnn_cell_impl.RNNCell):
+class PrunableGRU(RNNCell):
     def __init__(self,W,U,bias,thresh=0.1):
         self.input_sz = W.shape[0]
         unit_size = W.shape[1]//3

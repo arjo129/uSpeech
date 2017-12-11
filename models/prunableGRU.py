@@ -1,8 +1,12 @@
 import tensorflow as tf
+import numpy as np
 from tensorflow.contrib.rnn import RNNCell
 from tensorflow.python.ops import variable_scope as vs
 from tensorflow.python.ops import math_ops
 from tensorflow.python.framework.ops import convert_to_tensor
+
+def get_mask(arr, thresh=0.1):
+    return np.greater(abs(arr),thresh)*1
 
 class PrunableGRU(RNNCell):
     def __init__(self,W,U,bias,thresh=0.1):

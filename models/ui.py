@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
 from tkinter.scrolledtext import ScrolledText
+import os
 class MainUI(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master, width=600, height=480)
@@ -21,13 +22,18 @@ class MainUI(Frame):
         self.words = ScrolledText(self)
         self.words.grid(row=3,column=0,columnspan=2)
         self.trainbtn = Button(self, text ="Train model")
+        self.trainbtn.bind("<Button-1>",self.train)
         self.trainbtn.grid(row=4,column=1)
         self.pack(side=LEFT)
     def chdir(self, event):
         self.speech_data = filedialog.askdirectory()
-        self.data_directory.set("Using speech data from: "+self.speech_data)
-    
-
+        if self.speech_data:
+            self.data_directory.set("Using speech data from: "+self.speech_data)
+            os.chdir(self.speech_data)
+    def train(self, event):
+        filename = filedialog.asksaveasfilename(title = "Select file to checkpoint the model to",filetypes =(("uspeech model checkpoint","*.model"),))
+        if filename:
+            pass #TODO Implement training routine
 root = Tk()
 app =  MainUI(master=root)
 menubar = Menu(root)

@@ -77,11 +77,4 @@ def get_mfcc_vec(array):
         arr[i][0] = arr[i][0]/(max_power+1e-19)
     return arr
 
-def pad_batch(array):
-    maximum_len = max(map(len,array))
-    for item in range(0,len(array)):
-        if len(array[item]) < maximum_len:
-            array[item].extend([[0]*15]*(maximum_len-len(array[item])))
-        array[item] = np.array(array[item])
-
 

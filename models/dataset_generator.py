@@ -3,7 +3,15 @@ import re
 import hashlib
 import random
 from wavfile_decoder import *
-interested_words = 'yes no up down left right stop go on off unknown _background_'.split()
+interested_words = 'yes no up down left right stop go on off unknown'.split()
+
+
+def pad_batch(array,vec_size=2):
+    maximum_len = max(map(len,array))
+    for item in range(0,len(array)):
+        if len(array[item]) < maximum_len:
+            array[item].extend([[0]*vec_size]*(maximum_len-len(array[item])))
+        array[item] = np.array(array[item])
 
 def get_silence():
     word = "_background_"
@@ -12,6 +20,7 @@ def get_silence():
     length = len(arr) - 1600
     start = random.randint(0,length)
     return arr[start:start+1600]
+
 def get_batch(dataset, batchsize=32, batchtype="train"):
     X = []
     Y = []
@@ -29,7 +38,9 @@ def get_batch(dataset, batchsize=32, batchtype="train"):
         output[interested_words.index(word)] = 1
         Y.append(output)
     pad_batch(X)
-    return np.array(X),np.array(Y)
+    X = np.array(X)
+    Y = np.array(Y)
+    return X,Y
         
 def get_smallest_class(dataset):
     min = float('inf')

@@ -72,10 +72,10 @@ def prune_model(model,batchsize = 50):
     bias_out = weights[4]
     GRU = PrunableGRU(W,U,bias)
     Logits = PrunableLogits(W_out,bias_out)
-    X = tf.placeholder("float", [None, batchsize, 2])
+    X = tf.placeholder("float", [40, batchsize, 2])
     Y = tf.placeholder("float", [None, W_out.shape[1]])
-    X = tf.unstack(X,axis=1)
-    outputs, states = static_rnn(GRU, X, dtype=tf.float32)
+    x = tf.unstack(X,axis=0)
+    outputs, states = static_rnn(GRU, x, dtype=tf.float32)
     logits = Logits(outputs[-1])
     prediction = tf.nn.softmax(logits)
     loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y))
@@ -89,6 +89,7 @@ def prune_model(model,batchsize = 50):
         sess.run(init)
         for i in range(1000):
             batch_x, batch_y = get_batch(dataset,batchsize=batchsize,batchtype="train")
+            batch_x = np.swapaxes(batch_x,1,0)
             sess.run(train_op, feed_dict={X: batch_x, Y: batch_y})
             loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x,Y: batch_y})
             print(loss)

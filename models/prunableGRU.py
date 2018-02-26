@@ -63,7 +63,7 @@ class PrunableLogits:
     def __call__(self,inputs):
         return tf.matmul(inputs,self.weights*self.w_mask)+self.bias
     
-def prune_model(model,batchsize = 50):
+def prune_model(model,batchsize = 50,ckpt="model_pruned"):
     weights = model.get_weights()
     W = weights[0]
     U = weights[1]
@@ -85,6 +85,7 @@ def prune_model(model,batchsize = 50):
     accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
     init = tf.global_variables_initializer()
     dataset = build_dataset()
+    saver = tf.train.Saver()
     with tf.Session() as sess:
         sess.run(init)
         for i in range(1000):
@@ -92,6 +93,7 @@ def prune_model(model,batchsize = 50):
             batch_x = np.swapaxes(batch_x,1,0)
             sess.run(train_op, feed_dict={X: batch_x, Y: batch_y})
             loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x,Y: batch_y})
+            if i%100: saver.save(sess,ckpt)
             print(loss)
 if __name__=="__main__":
     from keras.models import load_model

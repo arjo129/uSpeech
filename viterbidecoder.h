@@ -10,30 +10,26 @@
 #ifndef VITERBIDECODER_H
 #define VITERBIDECODER_H
 #include <stdint.h>
-#define USPEECH_VSIZE 5
+#include <iostream>
+#include <stdlib.h>
+
 class ViterbiDecoder
 {
 private:
     uint8_t num_symbols;
-#ifndef defined(__AVR_ATmega328P__)
     float* accumulated_probabilities;
     float* new_probabilities;
-#endif
-#ifdef defined(__AVR_ATmega328P__)
-    //For Embedded we want to avoid dynamic memory
-    float accumulated_probabilities[USPEECH_VSIZE];
-    float new_probabilities[USPEECH_VSIZE];
-#endif
     const uint8_t* words;
     uint16_t samples;
     uint8_t word_length;
 public:
     ViterbiDecoder();
     void set_symbols(uint8_t num);
-    void add_word(const uint8_t* word, uint8_t word_length);
+    void set_word(const uint8_t* word, uint8_t length);
     void decode(float* classifier);
     void reset();
     float get_probability();
+    void debug();
 };
 
 #endif // VITERBIDECODER_H

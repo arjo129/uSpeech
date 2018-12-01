@@ -6,7 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-signal 		KEYWORD1
+signal	KEYWORD1
 syllable	KEYWORD1
 statcollector	KEYWORD1
 
@@ -15,8 +15,8 @@ statcollector	KEYWORD1
 #######################################
 
 getPhoneme	KEYWORD2
-snr		KEYWORD2
-sample		KEYWORD2
+snr	KEYWORD2
+sample	KEYWORD2
 calibrate	KEYWORD2
 #######################################
 # Instances (KEYWORD2)

@@ -29,8 +29,11 @@ def get_uspeech_vec(array):
             arr.append(np.array([power,difference/power]))
         else:
             arr.append(np.array([0,0]))
-    for i in range(0,len(arr)):
-        arr[i][0] = arr[i][0]/(max_power+1e-19)
+    tmp_arr = [0]*len(arr)
+    for i in range(1,len(arr)):
+        tmp_arr[i] = arr[i][0]/(arr[i-1][0]+1e-19)#(max_power+1e-19)
+    for i in range(len(arr)):
+        arr[i][0] = tmp_arr[i] if tmp_arr[i] < 1.5 else 1.5   
     return arr
 
 def down_sample(array, initial_sample_rate, desired_sample_rate):

@@ -3,7 +3,8 @@ import re
 import hashlib
 import random
 from wavfile_decoder import *
-interested_words = 'yes no up down left right stop go unknown'.split()
+#interested_words = 'yes no up down left right stop go'.split()
+interested_words = 'yes no stop'.split()
 
 
 def pad_batch(array,vec_size=2):

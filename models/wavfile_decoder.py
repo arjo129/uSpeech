@@ -1,7 +1,8 @@
 import wave
 import numpy as np
 import struct
-import scipy.fftpack as sp
+import math
+#import scipy.fftpack as sp
 
 def wav2arr(file):
     nparray = []
@@ -11,7 +12,7 @@ def wav2arr(file):
             wavedata = wavfile.readframes(1)
             data = struct.unpack("<h", wavedata)
             nparray.append(data[0])
-    return nparray
+    return down_sample(nparray,wavfile.getframerate(), 9600)
 
 
 def get_uspeech_vec(array):
@@ -32,6 +33,24 @@ def get_uspeech_vec(array):
         arr[i][0] = arr[i][0]/(max_power+1e-19)
     return arr
 
+def down_sample(array, initial_sample_rate, desired_sample_rate):
+    assert initial_sample_rate > desired_sample_rate
+    original_period = 1/initial_sample_rate
+    new_period = 1/desired_sample_rate
+    curr_time = 0
+    new_array = []
+    while curr_time < original_period*len(array):
+        desired_index = curr_time / original_period
+        lhs = array[math.floor(desired_index)]
+        if math.ceil(desired_index) >= len(array):
+            break
+        rhs = array[math.ceil(desired_index)]
+        new_val = (rhs - lhs)*(desired_index - math.floor(desired_index)) + lhs
+        new_array.append(new_val) 
+        curr_time += new_period
+    return new_array
+
+"""    
 def hz2mel(hz):
     return 2595*np.log10(1+hz/700)
 
@@ -76,5 +95,5 @@ def get_mfcc_vec(array):
     for i in range(0,len(arr)):
         arr[i][0] = arr[i][0]/(max_power+1e-19)
     return arr
-
+"""
 

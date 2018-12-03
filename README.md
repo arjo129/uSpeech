@@ -1,26 +1,19 @@
 # uSpeech library #
-The uSpeech library provides an interface for voice recognition using the Arduino. It currently produces phonemes, often the library will produce junk phonemes. Please bare with it for the time being. A noise removal function is underway.
-## Minimum Requirements  ##
-The library is quite intensive on the processor. Each sample collection takes about 3.2 milliseconds so pay close attention to the time. The library has been tested on the Arduino Uno (ATMega32). Each signal object uses up 160bytes. No real time scheduler should be used with this.
+This branch is a rewrite in progress of the original uSpeech algorithm. Given advances in deep learning it should now be possible
+to use these advances to generate a model. As such, this branch is no longer going to be written in C++. Rather,
+this branch will utilize python to generate a C++ library which can be embedded for any given board. As of now this a a massive work in progress.
 
-## Features ##
- - Letter based recognition
- - Small memory footprint
- - Arduino Compatible
- - Up to 80% accuracy with words
- - Novel algorithm based on simple calculus
- - Plugs directly into an ``analogRead()`` port
+## What has been done ##
+It is now possible to use tensorflow to train a tiny model based on GRUs that utilizes the uspeech library's feature recognition APIs to
+perform simple speech recognition. In particular, a few things were explored. Initially using a vector consisting of
+`[power, uspeech_coeff]` was attempted. This only achieved recognition accuracy of barely above 60% in a 4 word task. In contrast using MFCCs gave an accuracy of 86% (which is kind of disappointing). Normallizing power seemed to work rather well and the test accuracy of the
+data set reached 97%. However, normallizing power on an MCU is expensive as it will require storing the whole utterance in memory. So next I tried to use the ratio between pwer of the previous sample and power of the current sample. The purpose was to clamp the values close to 1 so that the GRU is not overwhelmed. This did not work as there were times when large energy bursts occured the value of the ratio would still far exceed 1. Thus, I placed an upper bound of 1.5 on this ratio. This brought the test accuracy back up to 86%.
 
-## Documentation ##
-
-Head over to the [wiki](https://github.com/arjo129/uSpeech/wiki) and you will find most of the documentation required.
-
-## Algorithm ##
-The library utilizes a special algorithm to enable speech detection. First the complexity of the signal is determined by taking
-the absolute derivative of the signal multiplying it by a fixed point saclar and then dividing it by the absolute integral of the signal.
-Consonants (other than R,L,N and M) have a value above 40 and vowels have a value below 40. Consonants, they can be divided into frictaves and plosives. Plosives are like p or b whereas frictaves are like
-s or z. Generally each band of the complexity coeficient (abs derivative over abs integral) can be matched to a small set of frictaves
-and plosives. The signal determines if it is a plosive or a frictave by watching the length of the utterance (plosives occur over short periods while frictaves over long).
-Finally the most appropriate character is chosen.
-
-- [Return to main page](http://arjo129.github.com)
+## What needs to be done ##
+[ ] Read words from CMUDict and use them to perform phoneme based classification
+[ ] Implement CTC
+[ ] Implement CodeGen
+[ ] Standardise API
+[ ] Write docs
+[ ] Write unit tests
+[ ] Setup CI

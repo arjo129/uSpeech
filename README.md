@@ -10,8 +10,8 @@ perform simple speech recognition. In particular, a few things were explored. In
 data set reached 97%. However, normallizing power on an MCU is expensive as it will require storing the whole utterance in memory. So next I tried to use the ratio between pwer of the previous sample and power of the current sample. The purpose was to clamp the values close to 1 so that the GRU is not overwhelmed. This did not work as there were times when large energy bursts occured the value of the ratio would still far exceed 1. Thus, I placed an upper bound of 1.5 on this ratio. This brought the test accuracy back up to 86%.
 
 ## What needs to be done ##
-- [ ] Read words from CMUDict and use them to perform phoneme based classification
-- [ ] Implement CTC
+- [x] Read words from CMUDict and use them to perform phoneme based classification
+- [x] Implement CTC (Still have to refactor code out...)
 - [ ] Implement CodeGen
 - [ ] Standardise API
 - [ ] Write docs

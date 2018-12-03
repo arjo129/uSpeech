@@ -3,9 +3,11 @@ import re
 import hashlib
 import random
 from wavfile_decoder import *
+from cmudict_parser import CMUDictParser, PhonemeRemapper
 #interested_words = 'yes no up down left right stop go'.split()
 interested_words = 'yes no stop'.split()
-
+phoneme_dictionary = CMUDictParser("C:\\Users\\arjo1\\Documents\\Arduino\\libraries\\uSpeech\\models\\cmudict-0.7b.txt")
+remapper = PhonemeRemapper(remapping="C:\\Users\\arjo1\\Documents\\Arduino\\libraries\\uSpeech\\models\\phoneremapping.json", cmu_dictionary=phoneme_dictionary)
 
 def pad_batch(array,vec_size=2):
     maximum_len = max(map(len,array))
@@ -13,6 +15,10 @@ def pad_batch(array,vec_size=2):
         if len(array[item]) < maximum_len:
             array[item].extend([[0]*vec_size]*(maximum_len-len(array[item])))
         array[item] = np.array(array[item])
+
+def pad_labels(labels, max_sequence_length):
+    for l in labels:
+        l.extend([0]*(max_sequence_length-len(l)))
 
 def get_silence():
     word = "_background_"
@@ -23,8 +29,8 @@ def get_silence():
     return arr[start:start+1600]
 
 def get_batch(dataset, batchsize=32, batchtype="train"):
-    X = []
-    Y = []
+    X,Y,Z = [], [],[]
+    max_sequence_length = 0
     for i in range(batchsize):
         word = random.choice(interested_words) 
         if word != "unknown" and word !="_background_":
@@ -35,13 +41,17 @@ def get_batch(dataset, batchsize=32, batchtype="train"):
         else:
             filename = random.choice(dataset[word][batchtype])
             X.append(get_uspeech_vec(wav2arr(filename)))
-        output = [0]*len(interested_words)
-        output[interested_words.index(word)] = 1
-        Y.append(output)
+        
+        phonemes = remapper.remap_for_training(word)
+        max_sequence_length = len(phonemes) if len(phonemes) > max_sequence_length else max_sequence_length
+        Y.append(phonemes)
+        Z.append(len(phonemes))
     pad_batch(X)
+    pad_labels(Y,max_sequence_length)
     X = np.array(X)
     Y = np.array(Y)
-    return X,Y
+    Z = np.array(Z)
+    return X,Y,Z
         
 def get_smallest_class(dataset):
     min = float('inf')
@@ -56,7 +66,7 @@ def build_dataset():
     data_set = {"unknown":{"train":[],"validate":[],"test":[]}}
     words = get_word_list()
     for word in words:
-        test,valid,train = generate_class_split(word)
+        test, valid, train = generate_class_split(word)
         if word in interested_words:
             data_set[word] = {"train":train,"validate":valid,"test":test}
         else:
@@ -134,4 +144,3 @@ def which_set(filename, validation_percentage, testing_percentage):
     result = 'training'
   return result
 
-#print(build_dataset()["unknown"])

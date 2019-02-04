@@ -47,8 +47,10 @@ float ViterbiDecoder::get_probability(){
 }
 
 void ViterbiDecoder::debug(){
+#ifdef TEST_ENVIRON
     for(int i = 0; i <word_length; i++){
         std::cout << accumulated_probabilities[i] << " ";
     }
     std::cout <<std::endl;
+ #endif
 }

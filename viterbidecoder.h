@@ -9,9 +9,11 @@
 */
 #ifndef VITERBIDECODER_H
 #define VITERBIDECODER_H
+#ifdef TEST_ENVIRON
 #include <stdint.h>
 #include <iostream>
 #include <stdlib.h>
+#endif
 
 class ViterbiDecoder
 {

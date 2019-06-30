@@ -23,6 +23,6 @@ bool Accumulator::is_ready(){
 
 void Accumulator::to_probabilities(){
     for(int i = 0 ; i < NUM_PHONES; i++){
-        phoneme_count[i] /= samples;
+        phoneme_count[i] /= SAMPLES;
     }
 }

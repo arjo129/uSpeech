@@ -9,8 +9,8 @@
 */
 #ifndef VITERBIDECODER_H
 #define VITERBIDECODER_H
-#ifdef TEST_ENVIRON
 #include <stdint.h>
+#ifdef TEST_ENVIRON
 #include <iostream>
 #include <stdlib.h>
 #endif

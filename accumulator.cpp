@@ -18,7 +18,7 @@ void Accumulator::add_phoneme(Phoneme p){
 }
 
 bool Accumulator::is_ready(){
-   return count  >= samples;
+   return count  >= SAMPLES;
 }
 
 void Accumulator::to_probabilities(){

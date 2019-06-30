@@ -1,7 +1,7 @@
 #ifndef ACCUMULATOR_H
 #define ACCUMULATOR_H
 #define NUM_PHONES 6
-#define samples 40
+#define SAMPLES 40
 typedef enum {
     O = 0,
     E = 1,

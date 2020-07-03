@@ -1,5 +1,8 @@
 # uSpeech library #
 WARNING!!! DO NOT USE THIS BRANCH. IT IS FOR EXPERIMENTATION. DOWNLOAD IT FROM THE [RELEASES PAGE](https://github.com/arjo129/uSpeech/releases)!!!!
+
+Also I do not have the time to maintain this library and given the price of Raspberry Pis you probably want to use them for speech recognition instead of an arduino.
+
 The uSpeech library provides an interface for voice recognition using the Arduino. It currently produces phonemes, often the library will produce junk phonemes. Please bare with it for the time being. A noise removal function is underway.
 ## Minimum Requirements  ##
 The library is quite intensive on the processor. Each sample collection takes about 3.2 milliseconds so pay close attention to the time. The library has been tested on the Arduino Uno (ATMega32). Each signal object uses up 160bytes. No real time scheduler should be used with this.
